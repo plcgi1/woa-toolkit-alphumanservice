@@ -4,6 +4,7 @@
 		'/css/prettyPhoto.css',
 	];
 	SET js=[
+		'http://maps.google.com/maps/api/js?sensor=false&language=ru&key=ABQIAAAA0N8bZlbHdFSqx52tdkdfxRRu73JzjqOKVPR9mDkGgtmlsIlnwhSmd_FNMm1iSHwwXOGCxRUFb9h6Zg&file=api',
 		'/js/min/jquery.js',
 		'/js/min/jquery.prettyPhoto.js',
 		'/js/dev/jquery.tmpl.js',
@@ -14,9 +15,6 @@
 	SET site = {
         copyright = 'woa.developer.labs'
 	};
-	IF is_debug
-		js.push('/js/dev/Dumper.js');
-	END	
 %]
 <html>
   [%PROCESS lib/header.tt css=css scripts=js%]
@@ -45,8 +43,13 @@
 				<div>{{html() current.description}}</div>
 				</div>
 			</td>
-			<td valign="top">{{if current.region_map}}<img src="/i/${ current.region_map }"/>{{/if}}</td>
+			<td valign="top">
+				{{if current.region_map}}<img src="/i/${ current.region_map }"/>{{/if}}
+			</td>
 		</tr>
 	</table>
 	</script>
+	<div><a target="_blank" href="http://maps.google.com/maps?ll=43.12650001,42.66060001&q=43.12650001,42.66060001&spn=0.1,0.1&t=k&hl=ru">(G)</a></div>
+	<div id="map_canvas" style="width:70%; height:70%"></div>	
+
 </html>

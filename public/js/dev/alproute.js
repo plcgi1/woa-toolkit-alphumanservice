@@ -1,3 +1,22 @@
+var alprouteConfig = {
+    gmapKey : 'ABQIAAAA0N8bZlbHdFSqx52tdkdfxRRu73JzjqOKVPR9mDkGgtmlsIlnwhSmd_FNMm1iSHwwXOGCxRUFb9h6Zg'    
+};
+
+var gmapInit = function() {
+    var latlng = new google.maps.LatLng(43.12650001,42.66060001);
+    var myOptions = {
+        zoom: 12,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+    var beachMarker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        icon: ''
+    });
+}
+  
 var RouteInfo = function(param){
     if ( param ) {
         this.name = new ko.observable(param.name);
@@ -29,9 +48,9 @@ var alprouteModel = {
 };
 
 $(document).ready(function(){
+    gmapInit();
     $.getJSON("/rest/alproute", function(data) { 
         alprouteModel.names(data); 
         ko.applyBindings(alprouteModel);
     });
-    
 });
