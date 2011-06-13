@@ -1,4 +1,4 @@
-package Alproute::Page::View;
+package Alproute::Page::Frontend::View;
 use common::sense;
 use base 'WOA::REST::ServiceProvider';
 use Data::Dumper;

@@ -11,15 +11,7 @@ use Template::Provider::Encoding;
 use Template::Stash::ForceUTF8;
 use Plack::App::File;
 use WOA::REST::ServiceProvider::Loader;
-use Alproute::Page::View;
-#use Alproute::RouteMap;
-
-# use your app model classes
-
-# define your app services classes
-
-# define your app pages classes
-
+use Alproute::RouteMap;
 
 my $app_root    = dirname(__FILE__).'/../';
 
@@ -34,29 +26,18 @@ my $tpl = Template->new({
 
 Log::Log4perl::init($config->{log4perl});
 
-#my $rules = Alproute::RouteMap->get_rules();
+my $rules = Alproute::RouteMap->get_rules();
 
 my $controller_param = {
     config              => $config,
-    renderer            => $tpl
+    renderer            => $tpl,
+    model               => ''
 };
 
-# create handlers for your services
-#    my $rest = Plack::Middleware::WOAx::App->new({
-#        service_provider    => 'ServiceProviderClassName',
-#        %$controller_param
-#    });
-
-# create handlers for your pages
-my $page = Plack::Middleware::WOAx::App->new({
-    service_provider    => 'Alproute::Page::View',
+my $app = Plack::Middleware::WOAx::App->new({
+    service_provider =>  WOA::REST::ServiceProvider::Loader->new({rules=>$rules}),
     %$controller_param
 });
-
-#my $app = Plack::Middleware::WOAx::App->new({
-#    service_provider =>  WOA::REST::ServiceProvider::Loader->new({rules=>$rules}),
-#    %$controller_param
-#});
 
 builder {
     enable "Plack::Middleware::Static", path => qr{\.(i|js|css|html|png|gif|jpg)$}, root => "$app_root/public";
@@ -65,17 +46,10 @@ builder {
     enable "Session",   store       => "File";
     # from $env->{'psgix.logger'}
     enable "Log4perl", category => "main";
-        
-    # mount pages
-    #   mount "/any/path/to/page/method" => $page;
-    
-    # mount services
-    #   mount "/any/path/to/service/method" => $rest;
-    mount '/alproute/view' => $page;
-    
+
     # or with dynamic mapping
-    #foreach ( @{$rules} ) {
-    #    mount $_->{path} => $app;    
-    #}
-    #$app;
+    foreach ( @{$rules} ) {
+        mount $_->{path} => $app;    
+    }
+    $app;
 };

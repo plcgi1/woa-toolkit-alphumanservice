@@ -4,22 +4,24 @@
 		'/css/prettyPhoto.css',
 	];
 	SET js=[
-        '/js/dev/Dumper.js',
 		'/js/min/jquery.js',
 		'/js/min/jquery.prettyPhoto.js',
 		'/js/dev/jquery.tmpl.js',
 		'/js/dev/json2.js',
 		'/js/dev/knockout-latest.debug.js',
-		'/js/dev/alprouteModel.js'
+		'/js/dev/alproute.js'
 	];
 	SET site = {
         copyright = 'woa.developer.labs'
 	};
+	IF is_debug
+		js.push('/js/dev/Dumper.js');
+	END	
 %]
 <html>
   [%PROCESS lib/header.tt css=css scripts=js%]
   <div id="container">
-  <h2 id="myLabel">Центральный Кавказ -> Сванетия -> Ушба</h2>
+  <h2 id="myLabel">Европа -> Кавказ -> Центральный Кавказ -> Адыл Су -> Ушба </h2>
   <div id="content" data-bind="template: 'fullTemplate'"></div>
 	[%PROCESS lib/footer.tt%]
 	<script type="text/html" id="fullTemplate">
@@ -32,7 +34,7 @@
 				{{/each}}
 				</ul>
 			</td>
-			<td valign="top">
+			<td width="40%" valign="top">
 				<div>
 				{{each(i) images()}}
 					<a href="/i/fullscreen/${ name }" rel="prettyPhoto[gallery]" title="${ name }">
@@ -46,12 +48,5 @@
 			<td valign="top">{{if current.region_map}}<img src="/i/${ current.region_map }"/>{{/if}}</td>
 		</tr>
 	</table>
-	</script>
-	<script type="text/html" id="routeTemplate">
-		<h4>${ item.name } ${ item.category } ${ item.type } ${ item.high }</h4>
-		<div id="description">{{html() item.description}}</div>
-	</script>
-	<script type="text/html" id="sliderTemplate">
-		
 	</script>
 </html>
