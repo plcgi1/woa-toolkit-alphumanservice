@@ -23,7 +23,7 @@ sub _get_data {
             name => "Ушба Северная по Северному гребню",
             id => "1",
             region_map => 'risunok078.jpg',
-            images => [{ name => 'ussg4a.jpg' },{ name => 'u-massiv.jpg'},{ name => 'ushba-ledopad.jpg' },{ name => 'ushba-ledopad2.jpg' },{ name => 'ushba-severnaya-gora.jpg'},{ name => 'ushba-severnaya.jpg'}],
+            images => [{ name => 'ushba-obzor.jpg' },{ name => 'ussg4a.jpg' },{ name => 'u-massiv.jpg'},{ name => 'ushba-ledopad.jpg' },{ name => 'ushba-ledopad2.jpg' },{ name => 'ushba-severnaya-gora.jpg'},{ name => 'ushba-severnaya.jpg'}],
             description => "
  <p>Массив Ужбы находится несколько южнее Главного Кавказского Хребта в Верхней Сванетии.</p>\
  <p>К северо-западу от Ужбы расположен массив вершин Шхельды, на севере пик Щуровского и на востоке Чатын-Тау.<br/>\
@@ -70,7 +70,7 @@ sub _get_data {
             name => "УШБА Малая",
             id => "3",
             region_map => 'risunok078.jpg',
-            images => [{ name => 'um2b.jpg'},{ name => 'u-massiv.jpg'}],
+            images => [{ name => 'ushba-obzor.jpg' },{ name => 'um2b.jpg'},{ name => 'u-massiv.jpg'}],
             description => "
 <p>Вершина Малая Ушба расположена в главном Кавказском хребте на Ушбинском плато. К северо-востоку от Малой Ушбы находится вершина Чатын-Тау, на юго-западе Северная и Южная Ушба и на севере пик Щуровского.</p>
 <p>Вершина Малая Ушба поднимается над Ушбинским плато на 150 метров. Единственный гребень, спускающийся с вершины, идет в направлении к перевалу Чалаат, в трех остальных направлениях склоны вершины обрываются крутыми стенами.</p>

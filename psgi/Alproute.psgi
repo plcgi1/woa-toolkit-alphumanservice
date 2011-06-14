@@ -43,6 +43,7 @@ builder {
     enable "Plack::Middleware::Static", path => qr{\.(i|js|css|html|png|gif|jpg)$}, root => "$app_root/public";
     enable "Plack::Middleware::AccessLog", format => "combined";
     enable "Plack::Middleware::ContentMD5";
+    enable "Plack::Middleware::WOAx::Project";
     enable "Session",   store       => "File";
     # from $env->{'psgix.logger'}
     enable "Log4perl", category => "main";

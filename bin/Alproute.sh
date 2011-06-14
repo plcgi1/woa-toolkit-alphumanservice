@@ -1,1 +1,1 @@
-plackup -I/home/harper/www/woa-toolkit/Alproute/lib -p 3030 -a /home/harper/www/woa-toolkit/Alproute/psgi/Alproute.psgi
+plackup -I/home/harper/www/woa-toolkit/lib -I/home/harper/www/woa-toolkit/Alproute/lib -p 3030 -a /home/harper/www/woa-toolkit/Alproute/psgi/Alproute.psgi
