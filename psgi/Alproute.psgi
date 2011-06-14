@@ -3,7 +3,7 @@ use Log::Log4perl;
 use File::Basename;
 use Plack::Builder;
 use Plack::Middleware::WOAx::App;
-
+use Alproute::Formatter;
 use WOA::Config::Provider;
 use Log::Log4perl;
 use Template;
@@ -27,11 +27,12 @@ my $tpl = Template->new({
 Log::Log4perl::init($config->{log4perl});
 
 my $rules = Alproute::RouteMap->get_rules();
-
+my $formatter = Alproute::Formatter->new();
 my $controller_param = {
     config              => $config,
     renderer            => $tpl,
-    model               => ''
+    model               => '',
+    formatter           => $formatter
 };
 
 my $app = Plack::Middleware::WOAx::App->new({

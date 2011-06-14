@@ -3,6 +3,7 @@ use common::sense;
 use base 'WOA::REST::Generic::Backend';
 use Data::Dumper;
 
+__PACKAGE__->mk_accessors(qw/formatter/);
 
 sub list {
     my ( $self, $param ) = @_;
@@ -11,9 +12,14 @@ sub list {
     my $session = $self->get_session();
     
     # make return with values - for tests
-    my $res = { status => 'ok' };
-
-    return $self->_get_data();
+    my $res = $self->_get_data();
+    foreach ( @{$res} ) {
+        $_->{description} = $self->get_formatter()->encode_utf($_->{description});
+        $_->{type} = $self->get_formatter()->encode_utf($_->{type});
+        $_->{category} = $self->get_formatter()->encode_utf($_->{category});
+        $_->{name} = $self->get_formatter()->encode_utf($_->{name});
+    }
+    return $res;
 
 }
 
