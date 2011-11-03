@@ -11,6 +11,8 @@ use Template::Provider::Encoding;
 use Template::Stash::ForceUTF8;
 use Plack::App::File;
 use WOA::REST::ServiceProvider::Loader;
+use AclManager::Model::DBIx;
+use Alproute::Model::DBIx;
 use Alproute::RouteMap;
 
 my $app_root    = dirname(__FILE__).'/../';
@@ -28,10 +30,28 @@ Log::Log4perl::init($config->{log4perl});
 
 my $rules = Alproute::RouteMap->get_rules();
 my $formatter = Alproute::Formatter->new();
+
+my $acl   = AclManager::Model::DBIx->connect(
+    $config->{acl}->{connect_info}->[0],
+    $config->{acl}->{connect_info}->[1],
+    $config->{acl}->{connect_info}->[2],
+    {
+        on_connect_do => $config->{acl}->{on_connect_do}
+    }
+);
+my $route = Alproute::Model::DBIx->connect(
+    $config->{route}->{connect_info}->[0],
+    $config->{route}->{connect_info}->[1],
+    $config->{route}->{connect_info}->[2],
+    {
+        on_connect_do => $config->{acl}->{on_connect_do}
+    }
+);
+
 my $controller_param = {
     config              => $config,
     renderer            => $tpl,
-    model               => '',
+    model               => { acl => $acl, route => $route },
     formatter           => $formatter
 };
 
@@ -41,11 +61,12 @@ my $app = Plack::Middleware::WOAx::App->new({
 });
 
 builder {
-    enable "Plack::Middleware::Static", path => qr{\.(i|js|css|html|png|gif|jpg)$}, root => "$app_root/public";
+    enable "Plack::Middleware::Static", path => qr{\.(i|js|css|html|png|gif|json|ico|jpg)$}, root => "$app_root/public";
     enable "Plack::Middleware::AccessLog", format => "combined";
     enable "Plack::Middleware::ContentMD5";
-    enable "Plack::Middleware::WOAx::Project";
+    
     enable "Session",   store       => "File";
+    enable "Plack::Middleware::WOAx::Project";
     # from $env->{'psgix.logger'}
     enable "Log4perl", category => "main";
 

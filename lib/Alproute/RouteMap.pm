@@ -8,6 +8,7 @@ use strict;
 my $rules = [
     
     { path => '/rest/alproute', class => 'Alproute::REST::RouteManager::SP' },
+    { path => '/rest/alproute/leaf', class => 'Alproute::REST::RouteManager::SP' },
     { path => '/alproute/view', class => 'Alproute::Page::Frontend::View' },
 ];
 sub get_rules { return $rules; }

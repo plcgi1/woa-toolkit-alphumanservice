@@ -2,7 +2,7 @@ package Alproute::REST::RouteManager::Backend;
 use common::sense;
 use base 'WOA::REST::Generic::Backend';
 use Data::Dumper;
-
+use JSON::XS qw/decode_json/;
 __PACKAGE__->mk_accessors(qw/formatter/);
 
 sub list {
@@ -12,21 +12,113 @@ sub list {
     my $session = $self->get_session();
     
     # make return with values - for tests
-    my $res = $self->_get_data();
-    foreach ( @{$res} ) {
-        $_->{description} = $self->get_formatter()->encode_utf($_->{description});
-        $_->{type} = $self->get_formatter()->encode_utf($_->{type});
-        $_->{category} = $self->get_formatter()->encode_utf($_->{category});
-        $_->{name} = $self->get_formatter()->encode_utf($_->{name});
-    }
-    return $res;
+    my $res;
 
+    my $fmt = $self->get_formatter;
+    
+    # make return with values - for tests
+    my $res;
+    $param->{id} ||= '0';
+    my $model = $self->get_model;
+    my @children = $model->{route}->resultset('Location')->search(
+        {
+            'me.parent_id'  => $param->{'id'},
+        },
+        {
+            select      => [qw/me.id me.name me.path me.parent_id me.context/],
+            as          => [qw/id name path parent_id context/],
+            order_by    => ['me.name']
+        }
+    );
+    
+    my @data;
+    if (@children) {
+        foreach my $ch (@children) {
+            my $name = $fmt->encode_utf($ch->get_column('name'));
+            my $loc = {
+                id          =>  $ch->get_column('id'),
+                parent_id   =>  $ch->get_column('parent_id'),
+                name        =>  $name,
+                title       =>  $name,
+                path        =>  $ch->get_column('path'),
+                context     =>  $ch->get_column('context'),
+            };
+            if ( $loc->{context} !~/(route|summit)/ ) {
+                $loc->{isLazy} =  'true';
+                $loc->{isFolder} = 'true';
+            }
+            else {
+                $loc->{isLazy} =  undef;
+                $loc->{isFolder} = undef;
+            }
+            push @data, $loc;
+        }
+        my @nres = sort {
+            if ( $a && $b ){
+                $b->{isLazy} cmp $a->{isLazy};
+            }
+        } @data;
+        $res = \@nres; 
+    }
+    else {
+        $res = [];
+    }
+    
+    return $res;
+}
+
+sub leafs {
+    my ( $self, $param ) = @_;
+
+    my $config  = $self->get_config;
+    my $session = $self->get_session();
+    my $fmt = $self->get_formatter;
+    my $model = $self->get_model;
+    my @children = $model->{route}->resultset('Description')->search(
+        {
+            'location.parent_id'    => $param->{'id'},
+            'location.context'      => 'route'
+        },
+        {
+            prefetch    => [qw/location/],
+            select      => [qw/me.id me.location_id me.content me.images me.difficulty me.high location.name me.category/],
+            as          => [qw/id location_id content images difficulty high name category/],
+            order_by    => ['location.name']
+        }
+    );
+    
+    my (@data,$res);
+    if (@children) {
+        foreach my $ch (@children) {
+            my $name = $fmt->encode_utf($ch->get_column('name'));
+            my $content = $fmt->encode_utf($ch->get_column('content'));
+            my $loc = {
+                id          =>  $ch->get_column('id'),
+                location_id =>  $ch->get_column('location_id'),
+                name        =>  $name,
+                description =>  $content,
+                difficulty  =>  $fmt->encode_utf($ch->get_column('difficulty')),
+                category    =>  $fmt->encode_utf($ch->get_column('category')),
+            };
+            my $images = eval $ch->get_column('images');
+            $loc->{images} = $images;
+            
+            push @data, $loc;
+        }
+        $res = \@data; 
+    }
+    else {
+        $res = [];
+    }
+    
+    return $res;
 }
 
 sub _get_data {
     return [
         {
             name => "Ушба Северная по Северному гребню",
+            title => "Ушба Северная по Северному гребню",
             id => "1",
             region_map => 'risunok078.jpg',
             images => [{ name => 'ushba-obzor.jpg' },{ name => 'ussg4a.jpg' },{ name => 'u-massiv.jpg'},{ name => 'ushba-ledopad.jpg' },{ name => 'ushba-ledopad2.jpg' },{ name => 'ushba-severnaya-gora.jpg'},{ name => 'ushba-severnaya.jpg'}],
@@ -58,6 +150,7 @@ sub _get_data {
         },
         {
             name => "Ушба Северная по Восточному склону Южного гребня с лед. Гуль",
+            title => "Ушба Северная по Восточному склону Южного гребня с лед. Гуль",
             id => "2",
             region_map => 'risunok078.jpg',
             images => [{ name => 'ushba-gul.jpg'}],
@@ -74,6 +167,7 @@ sub _get_data {
         },
         {
             name => "УШБА Малая",
+            title => "УШБА Малая",
             id => "3",
             region_map => 'risunok078.jpg',
             images => [{ name => 'ushba-obzor.jpg' },{ name => 'um2b.jpg'},{ name => 'u-massiv.jpg'}],

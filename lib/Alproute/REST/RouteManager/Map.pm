@@ -3,15 +3,32 @@ use strict;
 
 my $map = [
     {
-        regexp    => '/rest/alproute',
+        regexp    => '/rest/alproute(\/\d)*$',
         func_name => 'list',
         in        => {
-            skip_from_uri => 1,
-            #public        => 1,
+            #skip_from_uri => 1,
+            how => { method => 'from_uri', pattern => '/rest/alproute/:id' },
+            public        => 1,
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Some error message" },
+                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad id" },
+            ]
+        },
+        out			=>	{ mime_type => 'text/javascript', view_method => 'as_json' },
+        req_method => 'GET'
+    },
+    {
+        regexp    => '/rest/alproute/leaf/(\d+)$',
+        func_name => 'leafs',
+        in        => {
+            #skip_from_uri => 1,
+            how => { method => 'from_uri', pattern => '/rest/alproute/leaf/:id' },
+            public        => 1,
+            param         => [
+                # some patterns to define field names and validation rules
+                # all rule names - in WOA::Validator::Rules::Base
+                { name => 'id',         rules => [ {rule => 'integer' } ], required => 1, error => "Bad id" },
             ]
         },
         out			=>	{ mime_type => 'text/javascript', view_method => 'as_json' },
