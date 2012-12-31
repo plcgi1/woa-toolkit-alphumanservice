@@ -1,1 +1,17 @@
-/home/harper/www/woa-toolkit/apps/Alproute/public/css/Aristo/jquery-ui-1.8.7.custom.css
+body {
+	background: url(/i/mountain.jpg)  no-repeat;
+}
+.saved {
+	background: red;
+}
+.map {
+	height:100%;
+}
+/* gmap fix for images*/
+.map img {
+	max-width: none;
+}
+
+.middle {
+	margin: 0 auto;
+}

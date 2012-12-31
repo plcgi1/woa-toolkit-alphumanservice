@@ -1,0 +1,57 @@
+<div class="page-header">
+            <h4>Паспортные данные</h4>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Серийный номер</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Номер</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Выдан</label>
+            <div class="controls">
+              <textarea></textarea>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Дата выдачи</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Фамилия</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Имя</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Отчество</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Дата рождения</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Место рождения</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>

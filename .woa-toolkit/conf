@@ -1,0 +1,23 @@
+root = /home/harper/www/woa-toolkit/apps/Alphumanservice
+
+<app>
+    bin = bin
+    etc = etc  
+    lib = lib
+    templates = templates
+    t = t
+    rc.d = rc.d
+    run = run
+    public = public
+    log = log
+    psgi = psgi
+    <javascript>
+        validator_path = $public/js/validator
+    </javascript>
+</app>
+
+<apps>
+    <test-woax>
+        lib = lib
+    </test-woax>
+</apps>

@@ -1,0 +1,40 @@
+<div class="page-header">
+            <h4>Данные страхового полиса</h4>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Страховая компания</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Номер полиса</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Дата выдачи</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Срок действия</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Сумма</label>
+            <div class="controls">
+              <input type="text" class="input-large"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Комментарий</label>
+            <div class="controls">
+              <textarea></textarea>
+            </div>
+          </div>
+          

@@ -1,2 +1,3 @@
-<div id="sbar" style="width:100%;text-align:center;" class="footer">&copy; [% site.copyright %]</div>
-
+[%FOREACH scr IN js%]
+  <script src="[%scr%]"></script>
+  [%END%]

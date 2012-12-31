@@ -1,16 +1,16 @@
 <head>
-<title>[% site.title %]</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="keywords" content="review review-rest-service rest">
-<meta name="description" content="">
-[%-IF css && css.size > 0 %]
-    [%-FOREACH item IN css %]
-    <link rel="stylesheet" type="text/css" media="screen" href="[% item %]"></link>
-    [%-END-%]
-[%-END-%]
-[%-IF scripts && scripts.size > 0 %]
-    [%-FOREACH item IN scripts %]
-    <script type="text/javascript" src="[% item %]"></script>
-    [%-END-%] 
-[%-END-%]
-</head>
+    <title>place</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://app.divshot.com/css/divshot-util.css">
+    <link rel="stylesheet" href="https://app.divshot.com/themes/simplex/bootstrap.min.css">
+    <link rel="stylesheet" href="https://app.divshot.com/css/bootstrap-responsive.css">
+    <script src="https://app.divshot.com/js/jquery.min.js"></script>
+    
+    [%FOREACH item IN css%]
+    <link rel="stylesheet" href="[%item%]">
+    [%END%]
+    [%FOREACH scr IN js%]
+  <script src="[%scr%]"></script>
+  [%END%]
+  </head>

@@ -1,0 +1,51 @@
+<p class="lead">Заполнив формы - вы поможете себе</p>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-content">
+          <ul class="nav">
+            [%FOREACH item IN nav%]
+              [%IF item.parentid%][%next%][%END%]
+              [%SET path=item.path%]
+              <li class="[%item.class%]"><a href="[%path%]">[%item.title%]</a></li>
+            [%END%]
+          </ul>
+          <ul class="nav pills pull-right">
+            <li class="dropdown" id="usermenu">
+              
+              [%IF login%]
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+                  [%login%]
+                  <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#settings">Настройки</a></li>
+                <li class="divider"></li>
+                <li id="logout"><a href="#logout" class="logout">Выход</a></li>
+              </ul>
+              [%ELSE%]
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                Вход
+                <strong class="caret"></strong>
+              </a>
+              <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                <!-- Login form here -->
+                <form action="#login" method="post" accept-charset="UTF-8" id="loginFrm">
+                  <div id="response"></div>
+                  <label class="string optional" for="login"> Логин</label>
+                  <input id="login" style="margin-bottom: 15px;" type="text" name="login" size="30" />
+                  <label class="string optional" for="login"> Пароль</label>
+                  <input id="password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
+                  <input id="remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                  <label class="string optional" for="remember_me"> Запомнить</label>
+                  <a class="btn btn-primary login" role="btn" href="#">Вход</a>
+                </form>
+              </div>
+              [%END%]  
+            </li>  
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</p>

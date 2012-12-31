@@ -17,20 +17,13 @@ GetOptions(
 pod2usage(1) if $help;
 
 my $wcp = WOA::Config::Provider->new();
-my $config = $wcp->get_config($Bin.'/../etc/Alproute.conf');
-
-#make_schema_at(
-#    "AclManager::Model::DBIx",
-#    { debug => 1, dump_directory => './lib' },
-#    [ $config->{acl}->{connect_info}->[0],$config->{acl}->{connect_info}->[1],$config->{acl}->{connect_info}->[2] ]
-#);
+my $config = $wcp->get_config($Bin.'/../etc/Alphumanservice.conf');
 
 make_schema_at(
-    "Alproute::Model::DBIx",
+    "Alphumanservice::Model::DBIx",
     { debug => 1, dump_directory => './lib' },
-    [ $config->{route}->{connect_info}->[0],$config->{route}->{connect_info}->[1],$config->{route}->{connect_info}->[2] ]
+    [ $config->{connect_info}->[0],$config->{connect_info}->[1],$config->{connect_info}->[2] ]
 );
-
 exit(0);
 
 1;
