@@ -1,5 +1,7 @@
 package Alphumanservice::REST::Engine;
 use strict;
+use Data::Dumper;
+use JSON::XS;
 use parent 'WOA::REST::Engine';
 
 my $OK_STATUS_MAP = {
@@ -29,10 +31,48 @@ sub finalize {
 
 sub check_access { 1; }
 
+sub _fill_args {
+    my ( $self, $data ) = @_;
+
+    my $ct = $self->request->{env}->{CONTENT_TYPE};
+    my $param;
+    if ( $ct =~/application\/json/ ) {
+        my $json = JSON::XS->new->allow_nonref;
+
+        eval { $param = $json->decode($self->request->content) };
+    }
+    
+    my $session = $self->backend->get_session;
+    if( $session && $session->{user} ){
+        $param->{user_id} = $session->{user}->{id};
+    }
+    
+    if ( $param ) {
+        if(ref $param eq 'ARRAY'){
+            $param = $param->[0];
+        }
+        if( exists $param->{url} ){
+            $param->{url} =~s/&#47;/\//g;
+        }
+        foreach ( @{$data} ) {
+           my $v = $param->{$_->{name}};
+           $_->{value} = $v;
+        }
+
+    }
+    else {
+        $self->SUPER::_fill_args($data)
+    }
+    
+    $self->args_filled(1);
+
+    return;
+}
+
 sub set_error {
     my($self,$http_status,$msg,$message_data,$is_valid)=@_;
     
-    my $user_data = $self->backend->get_session();
+    my $user_data = $self->backend->get_session()->{user};
     
     $self->status($http_status);
     my $error_obj;

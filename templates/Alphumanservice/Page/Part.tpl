@@ -3,7 +3,7 @@
         '/css/jquery.jgrowl.css',
         '/css/style.css',
   ];
-  SET js=[
+  SET jscr=[
     '/js/app/config.js',
     '/js/app/pages/part/loader.js',    
     '/js/lib/loader.js',
@@ -67,6 +67,6 @@
         
       </div>  
     </div>
-  [%INCLUDE "lib/footer.tt" WITH js=js%]
+  [%INCLUDE "lib/footer.tt" WITH jscr=jscr%]
 </body>
 </html>

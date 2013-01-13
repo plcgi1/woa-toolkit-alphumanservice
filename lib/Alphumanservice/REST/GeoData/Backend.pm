@@ -9,7 +9,29 @@ sub save {
 
     my $config  = $self->get_config;
     my $session = $self->get_session();
+    my $model   = $self->get_model;
+    my $rs;
     
+    $session->{geodata} = {
+        name        =>  $param->{name},
+        longtitude  =>  $param->{longtitude},
+        lattitude   =>  $param->{lattitude}
+    };
+
+    if ( $param->{id} ) {
+
+    }
+    else {
+        # $rs = $model->resultset('Place')->create({
+        #     name        =>  $param->{name},
+        #     longtitude  =>  $param->{longtitude},
+        #     lattitude   =>  $param->{lattitude}
+        # });
+        # my $rs_user_place = $model->resultset('UserPlace')->find_or_create({
+        #     user_id     => $param->{user_id},
+        #     place_id    => $rs->get_column('id')
+        # });
+    }
     # make return with values - for tests
     my $res = { status => 'ok' };
 

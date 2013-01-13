@@ -8,10 +8,21 @@ use WOA::Config::Provider;
 use Log::Log4perl;
 use Text::Xslate;
 use Text::Xslate::Bridge::TT2;
+use Text::Xslate::Util qw(
+    mark_raw
+    unmark_raw
+    html_escape
+    uri_escape
+    p
+    html_builder
+    hash_with_default
+);
+use JavaScript::Value::Escape;
 use Plack::App::File;
 use Cache::FastMmap;
+use Data::Dumper;
 use WOA::REST::ServiceProvider::Loader;
-
+use JSON::XS qw/encode_json decode_json/;
 use Alphumanservice::Model::DBIx;
 use Alphumanservice::Formatter;
 use Alphumanservice::RouteMap;
@@ -21,10 +32,19 @@ my $app_root    = dirname(__FILE__).'/../';
 my $config = WOA::Config::Provider->get_config($app_root.'/etc/Alphumanservice.conf');
 my $tpl = Text::Xslate->new(
     path        => $config->{template_root},
-    #cache_dir   => $config->{template_cache},
+    #cache_dir  => $config->{template_cache},
     syntax      => 'TTerse',
-    verbose => 2,
-    module      => [qw(Text::Xslate::Bridge::TT2)],
+    verbose     => 2,
+    module      => [
+        'Text::Xslate::Bridge::TT2',
+        'JavaScript::Value::Escape' => [qw(js)] 
+    ],
+    function    => {
+        to_json => sub {
+            my $res = encode_json($_[0]);
+            return mark_raw($res);
+        }
+    }
 );
 
 Log::Log4perl::init($config->{log4perl});

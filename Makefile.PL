@@ -17,6 +17,7 @@ requires 'Plack::Middleware::Static';
 requires 'Plack::Middleware::AccessLog';
 requires 'Plack::Middleware::ContentMD5';
 
+requires 'JavaScript::Value::Escape';
 requires 'Carp';
 requires 'Error'          => 0.17010;
 requires 'File::Basename' => 2.77;

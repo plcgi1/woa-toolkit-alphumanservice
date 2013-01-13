@@ -26,10 +26,13 @@ window.modules = {
         
         "/js/lib/errorvis.js",
         "/js/lib/backbone/sync.js",
+        "/js/lib/bootstrap/bootstrap-modal.js",
         "/js/app/config.js",
         "/js/app/auth.js",
-        "/js/app/views/gmap.js",
         "/js/app/collections/place.js",
+        "/js/app/views/geoform.js",
+        "/js/app/views/gmap.js",        
+
         "/js/app/helpers/marker.js",        
         "/js/app/pages/place/main.js"        
     ]   

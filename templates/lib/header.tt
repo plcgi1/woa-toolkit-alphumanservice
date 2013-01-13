@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="https://app.divshot.com/css/divshot-util.css">
     <link rel="stylesheet" href="https://app.divshot.com/themes/simplex/bootstrap.min.css">
     <link rel="stylesheet" href="https://app.divshot.com/css/bootstrap-responsive.css">
-    <script src="https://app.divshot.com/js/jquery.min.js"></script>
+    <script src="/js/lib/jquery-1.8.3.min.js"></script>
     
     [%FOREACH item IN css%]
     <link rel="stylesheet" href="[%item%]">
     [%END%]
-    [%FOREACH scr IN js%]
+    [%FOREACH scr IN jscr%]
   <script src="[%scr%]"></script>
   [%END%]
   </head>

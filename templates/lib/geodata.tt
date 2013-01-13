@@ -1,0 +1,14 @@
+<div id="geoplaceDlg" class="modal hide fade" tabindex="-1" role="dialog" >
+  <form method="post" accept-charset="UTF-8" id="geoplace">
+    <div class="modal-body">
+        <label class="string required" for="name">Название места</label>
+        <textarea name="name" id="name"></textarea>
+        <input type="hidden" name="lattitude" id="lattitude"/>
+        <input type="hidden" name="longtitude" id="longtitude"/>
+        <div>
+        	<a class="btn save" id="saveGeodata" href="#">Сохранить</a>
+        	<a class="btn edit hide" id="editGeodata" href="#">Редактировать</a>
+        </div>
+    </div>
+  </form>
+</div>

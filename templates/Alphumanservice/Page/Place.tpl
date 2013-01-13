@@ -4,15 +4,18 @@
         '/css/style.css',
   ];
   SET hjs = ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCpTAvMBJ6ROyve33ASJLZm4ZhncK7FYuA&sensor=false"];
-  SET js=[
+  SET jscr=[
     '/js/app/config.js',
     '/js/app/pages/place/loader.js',    
     '/js/lib/loader.js',
   ];
 %]
 <html>
-  [%INCLUDE "lib/header.tt"  WITH  css=css,js=hjs%]
+  [%INCLUDE "lib/header.tt"  WITH  css=css,jscr=hjs%]
   <body>
+  <script>
+window.geodata = [% to_json(geodata) || '{}' %];
+  </script>
   <div class="container">
       [%INCLUDE "lib/top-nav.tt"%]
       <div class="row-fluid">
@@ -33,6 +36,8 @@
     <script id="Tpl" type="text/html">
         
     </script>
-  [%INCLUDE "lib/footer.tt" WITH js=js%]
+  [%INCLUDE "lib/geodata.tt"%]
+  [%INCLUDE "lib/footer.tt" WITH jscr=jscr%]
+  
 </body>
 </html>

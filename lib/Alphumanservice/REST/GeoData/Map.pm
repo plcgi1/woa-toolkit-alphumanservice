@@ -14,11 +14,11 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for geo coordinates" },
-                { name => 'user_id',    rules => [ {rule => 'integer' } ], required => 1,error => "Bad value for user_id" },
+                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for 'id'" },
+                { name => 'user_id',    rules => [ {rule => 'integer' } ], required => 1,error => "Bad value for 'user_id'" },
                 { name => 'lattitude',  rules => [ {rule => 'float' } ], required => 1,error => "Bad value for 'lattitude'" },
                 { name => 'longtitude', rules => [ {rule => 'float' } ], required => 1,error => "Bad value for 'longtitude'" },
-                { name => 'title',      rules => [ {rule => 'anyText'} ], error => "Bad title" },
+                { name => 'name',      rules => [ {rule => 'anyText'} ], required => 1,error => "Bad value for 'title'" },
             ]
         },
         # service output description

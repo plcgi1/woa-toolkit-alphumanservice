@@ -360,7 +360,7 @@ CREATE TABLE `user_place` (
   PRIMARY KEY (`id`),
   KEY `user_place_fk_place_id` (`place_id`),
   KEY `user_place_idx_user_id` (`user_id`),
-  CONSTRAINT `user_place_fk_place_id` FOREIGN KEY (`place_id`) REFERENCES `site` (`id`),
+  CONSTRAINT `user_place_fk_place_id` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`),
   CONSTRAINT `user_place_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

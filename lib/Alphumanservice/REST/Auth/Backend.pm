@@ -42,16 +42,19 @@ sub login {
             },
             {
                 join    => [qw/users site/],
-                select  => [qw/users.login users.actions/],
-                as      => [qw/login actions/],
+                select  => [qw/users.login users.actions users.id/],
+                as      => [qw/login actions id/],
                 limit   => 1
             }
         );
         if ( $user[0] ) {
             # get ACL user data
             $res->{acl} = $self->_get_acl_data($user[0],$app);
-            $session->{acl} = $res->{acl};
-            $session->{login}   = $user[0]->get_column('login');
+            $session->{acl}     = $res->{acl};
+            $session->{user}    = {
+                login => $user[0]->get_column('login'),
+                id    => $user[0]->get_column('id')
+            };
             
             #$self->_set_navigation_data_to_session($res->{acl},$session);
             

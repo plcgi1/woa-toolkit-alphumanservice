@@ -68,7 +68,7 @@ Backbone.sync = function(method, model, options) {
     options.error = function(res,err){
         try {
             var data = $.parseJSON(res.responseText);
-            window.ahs.ErrorVis.show_errors(data.Fields,data.Message);
+            window.ahs.ErrorVis.show_errors(data);
         }
         catch(e){
             alert(e);
@@ -81,12 +81,12 @@ Backbone.sync = function(method, model, options) {
         location.hash = '';
         
         if(success){
-            //console.log(collection);
             //console.log(data);
-            if ( collection === 'success' ) {
+            if ( data === 'success' ) {
                 collection = data;
             }
-            success(collection,data);
+            //console.log(success);
+            //success(collection,data);
             //console.log('sync.after success');
         }
         $.jGrowl('Данные сохранены');

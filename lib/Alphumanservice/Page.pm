@@ -35,11 +35,14 @@ sub service_object {
     if ( $env->{'session'}->{acl} ) {
         push @$nav,@{$session->{acl}};
     }
-        
-    $self->set_stash({
-        nav => $nav,
-        login => $session->{login}
-    });
+    
+    my %stash;
+    $stash{nav} = $nav;
+    if ( $session->{user} ){
+        $stash{login} = $session->{user}->{login};
+    }
+
+    $self->set_stash(\%stash);
     
     my $view    = Alphumanservice::REST::View->new({ renderer => $env->{renderer} });
     my $rest    = Alphumanservice::REST::Engine->new({

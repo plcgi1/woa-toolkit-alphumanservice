@@ -1,6 +1,7 @@
 package Alphumanservice::Page::Place;
 use common::sense;
 use base 'Alphumanservice::Page';
+use JSON::XS qw/encode_json/;
 use Data::Dumper;
 
 sub get_map {
@@ -21,6 +22,10 @@ sub index {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
+
+    if($session->{geodata}){
+       $self->get_stash->{geodata} = $session->{geodata};
+    }
 
     $self->get_stash->{template} = 'Alphumanservice/Page/Place.tpl';
 

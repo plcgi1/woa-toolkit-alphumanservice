@@ -155,6 +155,7 @@ var valuesToQs = function(data){
                 if ( inExclude(exludeArr,n) ){
                     return;
                 }
+
                 if ( tag == 'select' && typeof(dataHash[n]) == 'undefined' ){
                     $(this).val('');
                 }
@@ -162,7 +163,7 @@ var valuesToQs = function(data){
                 else if ( t == 'checkbox' || t == 'radio' ) {
                     var thisId = $(this).attr('id');
                     var thisName = $(this).attr('name');
-                    console.log(dataHash[thisName]);
+                    //console.log(dataHash[thisName]);
                     if( dataHash[thisName] && typeof dataHash[thisName] != 'undefined' ){
                         if ( dataHash[thisName].length > 0 ) {
                             for(var i=0;i<dataHash[thisName].length;i++){
@@ -177,6 +178,7 @@ var valuesToQs = function(data){
                     $(this).val('');
                 }
                 else {
+                    //console.log($(this).attr('id'));
                     $(this).val(dataHash[n]);
                 }
             });
