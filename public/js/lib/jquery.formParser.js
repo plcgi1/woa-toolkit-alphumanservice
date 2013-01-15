@@ -111,6 +111,11 @@ var valuesToQs = function(data){
                     hash[n] = prsChkGrp(n,fldVal,myId);
                     return;
                 }
+                else if( fldVal && typeof(fldVal) != 'undefined' && tag === 'textarea' ){
+                    //hash[n] = $(this).html();
+                    hash[n] = $(this).val();
+                    //console.log($(this).html());     
+                }
                 else if ( fldVal && typeof(fldVal) != 'undefined' && tag == 'select' ) {
                     if ( $(this).attr('multiple') ) {
                         hash[n] = prsMultuSelect(n,fldVal,myId);
@@ -158,6 +163,9 @@ var valuesToQs = function(data){
 
                 if ( tag == 'select' && typeof(dataHash[n]) == 'undefined' ){
                     $(this).val('');
+                }
+                else if ( tag == 'textarea' ){
+                    $(this).html(dataHash[n]);
                 }
                 else if ( t == 'button' ){}
                 else if ( t == 'checkbox' || t == 'radio' ) {

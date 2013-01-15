@@ -33,7 +33,7 @@ sub save {
         # });
     }
     # make return with values - for tests
-    my $res = { status => 'ok' };
+    my $res = { status => 'ok', geodata => $session->{geodata} };
 
     return $res;
 

@@ -6,13 +6,15 @@
   var View = Backbone.View.extend({
     el : $('#geoplaceDlg'),
     form: $('#geoplace').formParser(),
+    content: null,
     infowindow: null,
+    events : {
+      'click .save' : 'save'
+    },
     initialize: function(){
       //_.bind(this,'save_data');
-      
-      this.infowindow = new google.maps.InfoWindow({
-        content: $(this.el).html()
-      });
+      this.content = $('#geoplace').html();
+      this.infowindow = new google.maps.InfoWindow({});
     },
     set_data:function(geodata){
       this.form.valuesToForm({
@@ -22,21 +24,21 @@
       });
     },
     open: function(map,marker,lng,lat){
-      //if( lat.match() ){}
+      var content = $('#geoplace').html();
       this.form.valuesToForm({lattitude : lat,longtitude : lng});
+      this.infowindow.setContent(content);
       this.infowindow.open(map,marker);
       var self = this;
-      $('.save').click(function(){
+      
+      $('.save').live('click',function(){
         self.save();
       });
     },
     save: function(event){
       var data = this.form.fieldsToHash();
+      data.name = $('#name').val();
       // сохранить в модель
       this.collection.create(data);
-      //$('.edit').show();
-      //$('.save').hide();
-      //$('#name').attr({disabled:true});
     }
   });
   var view = new View({ collection : window.ahs.collections.Place.initialize() });

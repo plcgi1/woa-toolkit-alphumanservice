@@ -41,8 +41,8 @@
       map = new google.maps.Map(this.el, this.map_options);
       var self = this;
       if( window.geodata ){
-        this.place_marker({latLng:position},map);
         this.geoform.set_data(window.geodata);
+        this.place_marker({latLng:position},map);
       }
       google.maps.event.addListener(map, 'click', function(evt){
         self.place_marker(evt,map);
