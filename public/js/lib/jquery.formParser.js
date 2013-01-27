@@ -66,6 +66,8 @@ var valuesToQs = function(data){
         var allOpts = $.extend({}, $.fn.formParser.defaults, opts);
         var me = this;
         var myId = $(me).attr('id');
+        var form = $('#'+myId);
+        
         var prsChkGrp = function(name,val,id){
             var arr = [];
             $('#'+id+' input[name='+name+']').each(function(){
@@ -227,6 +229,21 @@ var valuesToQs = function(data){
             }
             return hash;
         };
+        
+        var fields = toHash();
+        /* 
+        * @example $('#selector').formParser().reset()
+        * @desc reset all fields in form
+        *
+        * @name clear
+        */
+        $.fn.clear = function (qs) {
+            var data = toHash();
+            for(key in data) {
+                data[key] = '';
+            }
+            me.valuesToForm(data);
+         };
         return this;
     };
 })(jQuery);

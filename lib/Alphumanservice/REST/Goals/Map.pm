@@ -14,7 +14,7 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for geo coordinates" },
+                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for id" },
                 { name => 'user_id',    rules => [ {rule => 'integer' } ], required => 1,error => "Bad value for user_id" },
                 { name => 'text',     rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'text'" },
                 { name => 'status',     rules => [ {rule => 'pattern', param => '^(1|2)$' } ], error => "Bad value for 'status'" },
@@ -42,7 +42,7 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for geo coordinates" },
+                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for id" },
                 { name => 'user_id',    rules => [ {rule => 'integer' } ], error => "Bad value for user_id" },
                 { name => 'status',     rules => [ {rule => 'pattern', param => '^(1|2)$' } ], error => "Bad value for 'status'" },
                 { name => 'sord',       rules => [ {rule => 'pattern',param => '^(asc|desc)$'} ], error => "Bad value for 'sord'" },
@@ -73,7 +73,7 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for geo coordinates" },
+                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for id" },
                 { name => 'user_id',    rules => [ {rule => 'integer' } ], error => "Bad value for user_id" },
             ]
         },

@@ -1,29 +1,21 @@
 package Alphumanservice::REST::UserData::Backend;
 use common::sense;
-use base 'Alphumanservice::REST::Backend';
+use parent 'Alphumanservice::Component::TemporaryService';
 use Data::Dumper;
 
+sub new {
+    my($class,$param) = @_;
+	$param->{key} = 'users_data';
+    my $self = $class->SUPER::new($param);
+    bless $self,$class;
 
-sub get {
-    my ( $self, $param ) = @_;
-
-    my $config  = $self->get_config;
-    my $session = $self->get_session();
-    
-    # make return with values - for tests
-    my $res = { status => 'ok' };
-
-    return $res;
-
+    return $self;
 }
-
-
-
 1;
 
 __END__
 
-=head1 Alphumanservice::REST::UserData::Backend
+=head1 Alphumanservice::REST::Goals::Backend
 
 
 =head2 SYNOPSIS

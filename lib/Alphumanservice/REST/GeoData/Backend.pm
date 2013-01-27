@@ -3,8 +3,7 @@ use common::sense;
 use base 'Alphumanservice::REST::Backend';
 use Data::Dumper;
 
-
-sub save {
+sub save_to_session {
     my ( $self, $param ) = @_;
 
     my $config  = $self->get_config;
@@ -22,15 +21,7 @@ sub save {
 
     }
     else {
-        # $rs = $model->resultset('Place')->create({
-        #     name        =>  $param->{name},
-        #     longtitude  =>  $param->{longtitude},
-        #     lattitude   =>  $param->{lattitude}
-        # });
-        # my $rs_user_place = $model->resultset('UserPlace')->find_or_create({
-        #     user_id     => $param->{user_id},
-        #     place_id    => $rs->get_column('id')
-        # });
+
     }
     # make return with values - for tests
     my $res = { status => 'ok', geodata => $session->{geodata} };

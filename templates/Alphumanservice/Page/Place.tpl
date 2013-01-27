@@ -3,7 +3,7 @@
         '/css/jquery.jgrowl.css',
         '/css/style.css',
   ];
-  SET hjs = ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCpTAvMBJ6ROyve33ASJLZm4ZhncK7FYuA&sensor=false"];
+  SET hjs = ["https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"];
   SET jscr=[
     '/js/app/config.js',
     '/js/app/pages/place/loader.js',    

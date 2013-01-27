@@ -35,18 +35,19 @@ sub _fill_args {
     my ( $self, $data ) = @_;
 
     my $ct = $self->request->{env}->{CONTENT_TYPE};
+    my $session = $self->backend->get_session;
     my $param;
+        
     if ( $ct =~/application\/json/ ) {
         my $json = JSON::XS->new->allow_nonref;
 
         eval { $param = $json->decode($self->request->content) };
     }
     
-    my $session = $self->backend->get_session;
     if( $session && $session->{user} ){
         $param->{user_id} = $session->{user}->{id};
     }
-    
+    $self->SUPER::_fill_args($data);
     if ( $param ) {
         if(ref $param eq 'ARRAY'){
             $param = $param->[0];
@@ -55,13 +56,15 @@ sub _fill_args {
             $param->{url} =~s/&#47;/\//g;
         }
         foreach ( @{$data} ) {
-           my $v = $param->{$_->{name}};
-           $_->{value} = $v;
+            if( $param->{$_->{name}} ) {
+                my $v = $param->{$_->{name}};
+                $_->{value} = $v;
+            }
         }
 
     }
     else {
-        $self->SUPER::_fill_args($data)
+        
     }
     
     $self->args_filled(1);

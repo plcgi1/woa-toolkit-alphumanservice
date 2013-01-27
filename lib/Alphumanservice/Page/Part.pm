@@ -1,6 +1,7 @@
 package Alphumanservice::Page::Part;
 use common::sense;
 use base 'Alphumanservice::Page';
+use Alphumanservice::REST::UserData::Backend;
 use Data::Dumper;
 
 sub get_map {
@@ -21,6 +22,13 @@ sub index {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
+
+    if($session->{users_data}){
+        my $be = Alphumanservice::REST::UserData::Backend->new({
+            session => $session,config=>$config
+        });
+        $self->get_stash->{usersdata} = $be->get();
+    }
 
     $self->get_stash->{template} = 'Alphumanservice/Page/Part.tpl';
 

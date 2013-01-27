@@ -25,10 +25,10 @@ window.modules = {
         "/js/lib/errorvis.js",
         "/js/lib/bootstrap/bootstrap-modal.js",
         "/js/lib/backbone/sync.js",
+        "/js/lib/backbone/list.js",
         "/js/app/config.js",
         "/js/app/auth.js",
-        "/js/app/collections/goals.js",
-        "/js/app/views/goals.js",
+        "/js/app/collections/common.js",
         "/js/app/helpers/marker.js",        
         "/js/app/pages/goals/main.js"        
     ]   

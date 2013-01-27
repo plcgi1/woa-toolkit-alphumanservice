@@ -1,40 +1,40 @@
 <div class="page-header">
-            <h4>Данные страхового полиса</h4>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Страховая компания</label>
-            <div class="controls">
-              <input type="text" class="input-large"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Номер полиса</label>
-            <div class="controls">
-              <input type="text" class="input-large"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Дата выдачи</label>
-            <div class="controls">
-              <input type="text" class="input-large"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Срок действия</label>
-            <div class="controls">
-              <input type="text" class="input-large"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Сумма</label>
-            <div class="controls">
-              <input type="text" class="input-large"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Комментарий</label>
-            <div class="controls">
-              <textarea></textarea>
-            </div>
-          </div>
+  <h4>Данные страхового полиса</h4>
+</div>
+<div class="control-group">
+  <label class="control-label">Страховая компания</label>
+  <div class="controls">
+    <input type="text" class="input-large" name="ensurance_name" id="ensurance_name"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Номер полиса</label>
+  <div class="controls">
+    <input type="text" class="input-large" name="ensurance_number" id="ensurance_number"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Дата выдачи</label>
+  <div class="controls">
+    <input type="text" class="input-large" name="ensurance_date" id="ensurance_date"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Срок действия</label>
+  <div class="controls">
+    <input type="text" class="input-large" name="ensurance_date_till" id="ensurance_date_till"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Сумма</label>
+  <div class="controls">
+    <input type="text" class="input-large" name="summ" id="summ"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Комментарий</label>
+  <div class="controls">
+    <textarea></textarea>
+  </div>
+</div>
           

@@ -23,11 +23,12 @@ window.modules = {
         "/js/app/app.js" ,
         
         "/js/lib/errorvis.js",
+        "/js/lib/bootstrap/bootstrap-modal.js",
         "/js/lib/backbone/sync.js",
+        "/js/lib/backbone/list.js",
         "/js/app/config.js",
         "/js/app/auth.js",
-        "/js/app/collections/privatedata.js",
-        "/js/app/views/part.js",
+        "/js/app/collections/common.js",
         "/js/app/helpers/marker.js",        
         "/js/app/pages/part/main.js"        
     ]   

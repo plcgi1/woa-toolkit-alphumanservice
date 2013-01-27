@@ -13,22 +13,16 @@ my $rules = [
     { path => '/ahs/goals', class => 'Alphumanservice::REST::Goals::SP' },
     
     { path => '/ahs/contacts', class => 'Alphumanservice::REST::Contacts::SP' },
+   
+    { path => '/ahs/usersdata$', class => 'Alphumanservice::REST::UserData::SP' },
     
-    { path => '/ahs/discharge', class => 'Alphumanservice::REST::DischargeData::SP' },
+    { path => '/ahs/geodata$', class => 'Alphumanservice::REST::GeoData::SP' },
     
-    { path => '/ahs/userdata', class => 'Alphumanservice::REST::UserData::SP' },
-    
-    { path => '/ahs/passport', class => 'Alphumanservice::REST::PassportData::SP' },
-    
-    { path => '/ahs/geodata', class => 'Alphumanservice::REST::GeoData::SP' },
-    
-    { path => '/ahs/ensurance', class => 'Alphumanservice::REST::EnsuranceData::SP' },
-    
-    { path => '/part-form/part', class => 'Alphumanservice::Page::Part' },
+    { path => '/part-form/part$', class => 'Alphumanservice::Page::Part' },
   
-    { path => '/part-form/goals', class => 'Alphumanservice::Page::Goals' },
+    { path => '/part-form/goals$', class => 'Alphumanservice::Page::Goals' },
     
-    { path => '/part-form/place', class => 'Alphumanservice::Page::Place' },
+    { path => '/part-form/place$', class => 'Alphumanservice::Page::Place' },
     
 ];
 

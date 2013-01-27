@@ -6,7 +6,7 @@ my $map = [
         # regexp or absolute value for url to service
         regexp    => '/ahs/geodata',
         # func name in Backend module
-        func_name => 'save',
+        func_name => 'save_to_session',
         # unique name for service - used in javascript validator rules
         name      => 'save_geodata',
         in        => {

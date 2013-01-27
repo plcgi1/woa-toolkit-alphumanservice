@@ -1,6 +1,7 @@
 package Alphumanservice::Page::Goals;
 use common::sense;
 use base 'Alphumanservice::Page';
+use Alphumanservice::REST::Goals::Backend;
 use Data::Dumper;
 
 sub get_map {
@@ -21,6 +22,12 @@ sub index {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
+    if($session->{goals}){
+        my $be = Alphumanservice::REST::Goals::Backend->new({
+            session => $session,config=>$config
+        });
+        $self->get_stash->{goals} = $be->get();
+    }
 
     $self->get_stash->{template} = 'Alphumanservice/Page/Goals.tpl';
 
