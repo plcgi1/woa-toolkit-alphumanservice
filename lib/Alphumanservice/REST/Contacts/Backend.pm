@@ -1,52 +1,16 @@
 package Alphumanservice::REST::Contacts::Backend;
 use common::sense;
-use base 'Alphumanservice::REST::Backend';
+use parent 'Alphumanservice::Component::TemporaryService';
 use Data::Dumper;
 
+sub new {
+    my($class,$param) = @_;
+	$param->{key} = 'contacts';
+    my $self = $class->SUPER::new($param);
+    bless $self,$class;
 
-sub save {
-    my ( $self, $param ) = @_;
-
-    my $config  = $self->get_config;
-    my $session = $self->get_session();
-    
-    # make return with values - for tests
-    my $res = { status => 'ok' };
-
-    return $res;
-
+    return $self;
 }
-
-
-sub get {
-    my ( $self, $param ) = @_;
-
-    my $config  = $self->get_config;
-    my $session = $self->get_session();
-    
-    # make return with values - for tests
-    my $res = { status => 'ok' };
-
-    return $res;
-
-}
-
-
-sub remove {
-    my ( $self, $param ) = @_;
-
-    my $config  = $self->get_config;
-    my $session = $self->get_session();
-    
-    # make return with values - for tests
-    my $res = { status => 'ok' };
-
-    return $res;
-
-}
-
-
-
 1;
 
 __END__

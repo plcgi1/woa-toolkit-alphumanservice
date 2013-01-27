@@ -452,5 +452,6 @@ insert into action(id,name,description,path,method_type,created,updated,type) va
 insert into action(id,name,description,path,method_type,created,updated,type,parentid) values(2,'PART_PLACE','Куда','/part-form/place','["GET"]',unix_timestamp(),unix_timestamp(),'page',1);
 insert into action(id,name,description,path,method_type,created,updated,type,parentid) values(3,'PART_PART','Участники','/part-form/part','["GET"]',unix_timestamp(),unix_timestamp(),'page',1);
 insert into action(id,name,description,path,method_type,created,updated,type,parentid) values(4,'PART_GOALS','Цели','/part-form/goals','["GET"]',unix_timestamp(),unix_timestamp(),'page',1);
+insert into action(id,name,description,path,method_type,created,updated,type,parentid) values(5,'PART_CONTACTS','Контакты','/part-form/contacts','["GET"]',unix_timestamp(),unix_timestamp(),'page',1);
 
 update users set actions='[1,2,3,4]'; 

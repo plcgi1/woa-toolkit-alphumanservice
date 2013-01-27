@@ -1,19 +1,18 @@
 /*
 
-var model = new BackboneCollectionExtendedClass();
+	var model = new BackboneCollectionExtendedClass();
   
-  var ListView = Backbone.List.View.extend({
-    template : $('#selector-for-template').html(),
-    dialog: $('#form-selector'),
-    el:$('#selector')
-    
-  });
-  
-  var list_view = new ListView({
-    collection: model,
-    showdialog: false
-  });
-  list_view.render();
+	var ListView = Backbone.List.View.extend({
+		template : $('#selector-for-template').html(),
+		dialog: $('#form-selector'),
+		el:$('#selector')
+	});
+	
+	var list_view = new ListView({
+	  collection: model,
+	  showdialog: false
+	});
+	list_view.render();
   
 */
 ;(function() {
@@ -31,7 +30,8 @@ var model = new BackboneCollectionExtendedClass();
             'click a.save' : 'save'
         },
         initialize: function(opts) {
-            Backbone.List.View.__super__.initialize.apply(this,[opts]);
+            //console.log(this.events);
+			Backbone.List.View.__super__.initialize.apply(this,[opts]);
             _.bindAll(this, 'save','remove','add','edit');
 			var self = this;
 			this.form = this.dialog.formParser();
@@ -39,13 +39,9 @@ var model = new BackboneCollectionExtendedClass();
             this.dialog.find('.save').live('click',function(el){
                 self.save(el);
             });
-//			$(this.el).live('click',function(el){
-//                self.edit(el);
-//            });
 			
             $.extend(this,opts);
 			this.showdialog = opts.showdialog;
-						
         },
         _get_string_after_hash: function(el){
             var id = $(el.target).attr('href').split('#')[1];

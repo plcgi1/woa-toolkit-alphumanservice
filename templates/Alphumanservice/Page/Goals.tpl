@@ -23,6 +23,9 @@
 			  <li class="active">
 				<a href="#formDlg" role="button" class="btn showmodal add" data-toggle="modal">Добавить</a>
 			  </li>
+			  <li>
+				<a class="btn confirm" href="#">Подтвердить все данные</a>
+			  </li>
 			</ul>
 		  </div>
 		  <div class="span9" id="list"></div>

@@ -14,12 +14,18 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'integer' } ], error => "Bad value for geo coordinates" },
+                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for geo coordinates" },
                 { name => 'user_id',    rules => [ {rule => 'integer' } ], required => 1,error => "Bad value for user_id" },
-                { name => 'phone',     rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'phone'" },
-                { name => 'email',     rules => [ {rule => 'email' } ], error => "Bad value for 'email'" },
+                { name => 'fname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'fname'" },
+                { name => 'mname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'mname'" },
+                { name => 'lname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'lname'" },
+                { name => 'phone',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'phone'" },
+                { name => 'mphone1',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'mphone1'" },
+                { name => 'mphone2',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'mphone2'" },
+                { name => 'email',     rules => [ {rule => 'email' } ], required => 1,error => "Bad value for 'email'" },
                 { name => 'skype',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'skype'" },
                 { name => 'icq',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'icq'" },
+                { name => 'twitter',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'twitter'" },
             ]
         },
         # service output description

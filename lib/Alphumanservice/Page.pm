@@ -50,7 +50,7 @@ sub service_object {
         backend =>  $self,
         view    =>  $view,
     });
-    warn "".Dumper $self->{name};    
+    
     return $rest;
 }
 
