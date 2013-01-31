@@ -25,7 +25,7 @@ __PACKAGE__->table("users");
 
 =head2 id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
 
@@ -77,7 +77,7 @@ __PACKAGE__->table("users");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "bigint", is_auto_increment => 1, is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "login",
   { data_type => "varchar", is_nullable => 0, size => 50 },
   "password",
@@ -110,77 +110,62 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 user_info_contacts
+=head2 ensurance_users
 
 Type: has_many
 
-Related object: L<Alphumanservice::Model::DBIx::Result::UserInfoContact>
+Related object: L<Alphumanservice::Model::DBIx::Result::EnsuranceUser>
 
 =cut
 
 __PACKAGE__->has_many(
-  "user_info_contacts",
-  "Alphumanservice::Model::DBIx::Result::UserInfoContact",
+  "ensurance_users",
+  "Alphumanservice::Model::DBIx::Result::EnsuranceUser",
   { "foreign.user_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 user_info_discharges
+=head2 passport_datas
 
 Type: has_many
 
-Related object: L<Alphumanservice::Model::DBIx::Result::UserInfoDischarge>
+Related object: L<Alphumanservice::Model::DBIx::Result::PassportData>
 
 =cut
 
 __PACKAGE__->has_many(
-  "user_info_discharges",
-  "Alphumanservice::Model::DBIx::Result::UserInfoDischarge",
+  "passport_datas",
+  "Alphumanservice::Model::DBIx::Result::PassportData",
   { "foreign.user_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 user_info_ensurances
+=head2 projects
 
 Type: has_many
 
-Related object: L<Alphumanservice::Model::DBIx::Result::UserInfoEnsurance>
+Related object: L<Alphumanservice::Model::DBIx::Result::Project>
 
 =cut
 
 __PACKAGE__->has_many(
-  "user_info_ensurances",
-  "Alphumanservice::Model::DBIx::Result::UserInfoEnsurance",
-  { "foreign.user_id" => "self.id" },
+  "projects",
+  "Alphumanservice::Model::DBIx::Result::Project",
+  { "foreign.owner_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 user_info_passports
+=head2 user_projects
 
 Type: has_many
 
-Related object: L<Alphumanservice::Model::DBIx::Result::UserInfoPassport>
+Related object: L<Alphumanservice::Model::DBIx::Result::UserProject>
 
 =cut
 
 __PACKAGE__->has_many(
-  "user_info_passports",
-  "Alphumanservice::Model::DBIx::Result::UserInfoPassport",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-=head2 user_places
-
-Type: has_many
-
-Related object: L<Alphumanservice::Model::DBIx::Result::UserPlace>
-
-=cut
-
-__PACKAGE__->has_many(
-  "user_places",
-  "Alphumanservice::Model::DBIx::Result::UserPlace",
+  "user_projects",
+  "Alphumanservice::Model::DBIx::Result::UserProject",
   { "foreign.user_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -201,8 +186,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2012-12-25 16:47:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MoaOz3ETMiEnfMXQF7y7PA
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-01 00:39:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:13YO0k98UQM9bj+rYoa9Bg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -10,7 +10,7 @@ sub as_html {
 	
 	];
 	$obj->{subnav} = [
-		{ url => "/part-form/contacts", name => "contacts", title => "Контакты" },
+		#{ url => "/part-form/contacts", name => "contacts", title => "Контакты" },
 		{ url => "/part-form/place", name => "place", title => "Куда" },
 		{ url => "/part-form/part", name => "part", title => "Участники" },
 		{ url => "/part-form/goals", name => "goals", title => "Цели" },

@@ -101,8 +101,8 @@ __PACKAGE__->set_primary_key("id");
 __PACKAGE__->add_unique_constraint("role_name_idx", ["name"]);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2012-12-25 16:47:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ubAht5AqIXUJTJEcUpmRlA
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-01 00:29:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kV/vzHfZcftGg4BQ+7vQvw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

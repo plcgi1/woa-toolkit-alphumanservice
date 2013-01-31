@@ -1,12 +1,12 @@
 use utf8;
-package Alphumanservice::Model::DBIx::Result::UserInfoPassport;
+package Alphumanservice::Model::DBIx::Result::PassportData;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-Alphumanservice::Model::DBIx::Result::UserInfoPassport
+Alphumanservice::Model::DBIx::Result::PassportData
 
 =cut
 
@@ -15,23 +15,23 @@ use warnings;
 
 use base 'DBIx::Class::Core';
 
-=head1 TABLE: C<user_info_passport>
+=head1 TABLE: C<passport_data>
 
 =cut
 
-__PACKAGE__->table("user_info_passport");
+__PACKAGE__->table("passport_data");
 
 =head1 ACCESSORS
 
 =head2 id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
 
 =head2 user_id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
@@ -49,7 +49,7 @@ __PACKAGE__->table("user_info_passport");
 
 =head2 received
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_nullable: 0
 
 =head2 place
@@ -60,7 +60,7 @@ __PACKAGE__->table("user_info_passport");
 
 =head2 date_of_birth
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_nullable: 0
 
 =head2 place_of_birth
@@ -89,26 +89,26 @@ __PACKAGE__->table("user_info_passport");
 
 =head2 updated
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_nullable: 0
 
 =cut
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "bigint", is_auto_increment => 1, is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "user_id",
-  { data_type => "bigint", is_foreign_key => 1, is_nullable => 0 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "serial",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "number",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "received",
-  { data_type => "bigint", is_nullable => 0 },
+  { data_type => "integer", is_nullable => 0 },
   "place",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "date_of_birth",
-  { data_type => "bigint", is_nullable => 0 },
+  { data_type => "integer", is_nullable => 0 },
   "place_of_birth",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "fname",
@@ -118,7 +118,7 @@ __PACKAGE__->add_columns(
   "lname",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "updated",
-  { data_type => "bigint", is_nullable => 0 },
+  { data_type => "integer", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -132,6 +132,20 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<mname_UNIQUE>
+
+=over 4
+
+=item * L</mname>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("mname_UNIQUE", ["mname"]);
 
 =head1 RELATIONS
 
@@ -151,8 +165,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2012-12-25 16:47:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wQe5uO0k3Rd/iloHOEq+jA
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-01 00:29:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tBjo20OYUIYy0DMTgCDZ/g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -36,13 +36,13 @@ sub login {
     if ( $app ) {
         my @user = $self->get_model()->resultset('UserSite')->search(
             {
-                'users.login'       => $param->{login},
-                'users.password'    => md5_hex($param->{password}),
+                'user.login'       => $param->{login},
+                'user.password'    => md5_hex($param->{password}),
                 'site.id'           => $app->get_column('id')
             },
             {
-                join    => [qw/users site/],
-                select  => [qw/users.login users.actions users.id/],
+                join    => [qw/user site/],
+                select  => [qw/user.login user.actions user.id/],
                 as      => [qw/login actions id/],
                 limit   => 1
             }

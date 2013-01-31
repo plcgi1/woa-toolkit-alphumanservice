@@ -29,6 +29,9 @@ my $map = [
                 { name => 'lname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'lname'" },
                 { name => 'ensurance_name',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'ensurance_name'" },
                 { name => 'ensurance_date_till',     rules => [ {rule => 'simple_date_dmy' } ], error => "Bad value for 'ensurance_date_till'" },
+                
+                { name => 'ensurance_comment',    rules => [ {rule => 'anyText' } ], error => "Bad value for ensurance_comment" },
+                { name => 'currency',    rules => [ {rule => 'pattern', param => '^(BR|RR|USD|EU)$' } ], error => "Bad value for currency" },
                 { name => 'summ',    rules => [ {rule => 'integer' } ], error => "Bad value for 'summ" },
             ]
         },

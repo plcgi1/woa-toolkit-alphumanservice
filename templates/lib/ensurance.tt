@@ -32,9 +32,20 @@
   </div>
 </div>
 <div class="control-group">
+  <label class="control-label">Валюта</label>
+  <div class="controls">
+    <select name="currency" id="currency">
+      <option value="BR">BR</option>
+      <option value="RR">RR</option>
+      <option value="USD">USD</option>
+      <option value="EU">EU</option>
+    </select> 
+  </div>
+</div>
+<div class="control-group">
   <label class="control-label">Комментарий</label>
   <div class="controls">
-    <textarea></textarea>
+    <textarea name="ensurance_comment" id="ensurance_comment"></textarea>
   </div>
 </div>
           

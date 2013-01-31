@@ -1,6 +1,24 @@
 <div class="page-header">
             <h4>Паспортные данные</h4>
           </div>
+<div class="control-group">
+            <label class="control-label">Фамилия</label>
+            <div class="controls">
+              <input type="text" class="input-large" name="lname" id="lname"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Имя</label>
+            <div class="controls">
+              <input type="text" class="input-large" name="fname" id="fname"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Отчество</label>
+            <div class="controls">
+              <input type="text" class="input-large" name="mname" id="mname"> 
+            </div>
+          </div>
           <div class="control-group">
             <label class="control-label">Серийный номер</label>
             <div class="controls">
@@ -25,24 +43,7 @@
               <input type="text" class="input-large" name="input_date" id="input_date"> 
             </div>
           </div>
-          <div class="control-group">
-            <label class="control-label">Фамилия</label>
-            <div class="controls">
-              <input type="text" class="input-large" name="lname" id="lname"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Имя</label>
-            <div class="controls">
-              <input type="text" class="input-large" name="fname" id="fname"> 
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Отчество</label>
-            <div class="controls">
-              <input type="text" class="input-large" name="mname" id="mname"> 
-            </div>
-          </div>
+          
           <div class="control-group">
             <label class="control-label">Дата рождения</label>
             <div class="controls">

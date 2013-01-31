@@ -74,6 +74,11 @@ __PACKAGE__->table("action");
   data_type: 'bigint'
   is_nullable: 0
 
+=head2 parentid
+
+  data_type: 'bigint'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -96,7 +101,7 @@ __PACKAGE__->add_columns(
   "siteid",
   { data_type => "bigint", is_nullable => 0 },
   "parentid",
-  { data_type => "bigint", is_nullable => 0 },
+  { data_type => "bigint", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -143,8 +148,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2012-12-25 16:47:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FiVoPevj2U79dnz/IEeHsQ
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-01 00:29:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PbbqCfmbqT9gRUfYg6Xc5A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
