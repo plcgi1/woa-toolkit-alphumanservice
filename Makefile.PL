@@ -60,6 +60,9 @@ requires 'common::sense' => 3.4;
 requires 'parent'        => 0.225;
 requires 'Locale::Maketext';
 requires 'HTTP::Request::AsCGI';
+requires 'HTTP::Exception';
+
+requires 'DBIx::Class';
 
 requires 'Cache::FastMmap';
 
