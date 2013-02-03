@@ -9,14 +9,17 @@ sub save_to_session {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $model   = $self->get_model;
+    my $fmt     = $self->get_formatter();
+    
     my $rs;
     
-    $session->{geodata} = {
+    $session->{geodata} = [{
         name        =>  $param->{name},
         longtitude  =>  $param->{longtitude},
         lattitude   =>  $param->{lattitude}
-    };
-
+    }];
+    
+    
     if ( $param->{id} ) {
 
     }
@@ -24,7 +27,7 @@ sub save_to_session {
 
     }
     # make return with values - for tests
-    my $res = { status => 'ok', geodata => $session->{geodata} };
+    my $res = { geodata => $session->{geodata} };
 
     return $res;
 

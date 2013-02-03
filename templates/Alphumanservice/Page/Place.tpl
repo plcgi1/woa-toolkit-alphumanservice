@@ -14,7 +14,7 @@
   [%INCLUDE "lib/header.tt"  WITH  css=css,jscr=hjs%]
   <body>
   <script>
-window.geodata = [% to_json(geodata) || '{}' %];
+window.geodata = [% to_json(geodata) || '[]' %];
   </script>
   <div class="container">
       [%INCLUDE "lib/top-nav.tt"%]

@@ -28,8 +28,8 @@
       this.geoform = opts.geoform;
 
       var position = new google.maps.LatLng(55.167596, 28.248897);
-      if( window.geodata ){
-        position = new google.maps.LatLng(window.geodata.lattitude,window.geodata.longtitude);
+      if( window.geodata && window.geodata.length>0 ){
+        position = new google.maps.LatLng(window.geodata[0].lattitude,window.geodata[0].longtitude);
       }
       //console.log(coords);
       this.map_options = {

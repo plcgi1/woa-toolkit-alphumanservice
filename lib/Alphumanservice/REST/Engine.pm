@@ -1,7 +1,7 @@
 package Alphumanservice::REST::Engine;
 use strict;
 use Data::Dumper;
-use JSON::XS;
+use JSON::XS qw/decode_json/;
 use parent 'WOA::REST::Engine';
 
 my $OK_STATUS_MAP = {
@@ -37,13 +37,13 @@ sub _fill_args {
     my $ct = $self->request->{env}->{CONTENT_TYPE};
     my $session = $self->backend->get_session;
     my $param;
-        
-    if ( $ct =~/application\/json/ ) {
-        my $json = JSON::XS->new->allow_nonref;
 
-        eval { $param = $json->decode($self->request->content) };
+    if ( $ct =~/application\/json/ ) {
+        eval {
+            $param = JSON::XS->new->utf8->allow_nonref->decode($self->request->content);
+        };
     }
-    
+     
     if( $session && $session->{user} ){
         $param->{user_id} = $session->{user}->{id};
     }

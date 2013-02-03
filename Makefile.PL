@@ -63,6 +63,7 @@ requires 'HTTP::Request::AsCGI';
 requires 'HTTP::Exception';
 
 requires 'DBIx::Class';
+requires 'DBD::mysql';
 
 requires 'Cache::FastMmap';
 

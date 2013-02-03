@@ -90,7 +90,14 @@ Backbone.sync = function(method, model, options) {
     // Ensure that we have the appropriate request data.
     if (!options.data && model && (method == 'create' || method == 'update')) {
         params.contentType = 'application/json';
+        //var arr = [];
+        //var json_data = model.toJSON();
+        //for ( key in json_data) {
+        //    arr.push(key+'='+json_data[key]);
+        //}
+        //params.data = arr.join('&');
         params.data = JSON.stringify(model.toJSON());
+        //console.log(params.data);
     }
     
     // For older servers, emulate JSON by encoding the request into an HTML-form.

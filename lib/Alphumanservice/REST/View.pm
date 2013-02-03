@@ -4,6 +4,18 @@ use Encode qw/from_to decode is_utf8 encode/;
 use Data::Dumper;
 use parent 'WOA::REST::Generic::View';
 
+sub as_json {
+	my ( $self, $obj, $is_utf8 ) = @_;
+
+	my $res;
+	if ($obj) {
+		my $coder = JSON::XS->new();
+		$res = JSON::XS->new->utf8->allow_nonref->encode($obj);
+	}
+
+	return $res;
+}
+
 sub as_html {
 	my ( $self, $obj ) = @_;
 	$obj->{topnav} = [

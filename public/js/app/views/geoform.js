@@ -18,9 +18,9 @@
     },
     set_data:function(geodata){
       this.form.valuesToForm({
-        lattitude : geodata.lattitude,
-        longtitude : geodata.longtitude,
-        name: geodata.name
+        lattitude : geodata[0].lattitude,
+        longtitude : geodata[0].longtitude,
+        name: geodata[0].name
       });
     },
     open: function(map,marker,lng,lat){
@@ -37,6 +37,8 @@
     save: function(event){
       var data = this.form.fieldsToHash();
       data.name = $('#name').val();
+      console.log(data);
+      this.collection.reset(data);
       // сохранить в модель
       this.collection.create(data);
     }
