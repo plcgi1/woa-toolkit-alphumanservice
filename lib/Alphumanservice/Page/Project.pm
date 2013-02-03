@@ -1,13 +1,13 @@
-package Alphumanservice::Page::Contacts;
+package Alphumanservice::Page::Project;
 use common::sense;
 use base 'Alphumanservice::Page';
 use Data::Dumper;
-use Alphumanservice::REST::Contacts::Backend;
+use Alphumanservice::REST::Project::Backend;
 
 sub get_map {
     my $map = [
         {
-            regexp    => '/part-form/contacts',
+            regexp    => '/part-form/project',
             func_name => 'index',
             out       => { mime_type => 'text/html', view_method => 'as_html' },
             req_method => 'GET'
@@ -22,14 +22,14 @@ sub index {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
-    if($session->{contacts}){
-        my $be = Alphumanservice::REST::Contacts::Backend->new({
+    if($session->{project_data}){
+        my $be = Alphumanservice::REST::Project::Backend->new({
             session => $session,config=>$config
         });
-        $self->get_stash->{contacts} = $be->get();
+        $self->get_stash->{project_data} = $be->get();
     }
 
-    $self->get_stash->{template} = 'Alphumanservice/Page/Contacts.tpl';
+    $self->get_stash->{template} = 'Alphumanservice/Page/Project.tpl';
 
     return $self->get_stash;
 }
@@ -38,7 +38,7 @@ sub index {
 
 __END__
 
-=head1 Alphumanservice::Page::Contacts
+=head1 Alphumanservice::Page::Project
 
 
 =head2 SYNOPSIS

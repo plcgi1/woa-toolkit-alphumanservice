@@ -30,7 +30,7 @@ window.modules = {
         "/js/app/auth.js",
         "/js/app/collections/common.js",
         "/js/app/helpers/marker.js",        
-        "/js/app/pages/contacts/main.js"        
+        "/js/app/pages/project/main.js"        
     ]   
 };
 

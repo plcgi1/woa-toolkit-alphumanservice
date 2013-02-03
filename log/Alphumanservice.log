@@ -1,0 +1,22 @@
+[2013/02/03 00:49:43] [ERROR] -  // main:42
+[2013/02/03 00:51:12] [ERROR] -  // main:42
+[2013/02/03 00:59:56] [ERROR] - [_save_goals]$VAR1 = bless( {
+                 'msg' => 'DBIx::Class::ResultSet::find_or_create(): DBI Exception: DBD::mysql::st execute failed: Column \'name\' cannot be null [for Statement "INSERT INTO goals ( name, project_id) VALUES ( ?, ? )" with ParamValues: 0=undef, 1=\'2\'] at /home/plcgi/www/woa-toolkit/apps/Alphumanservice/lib/Alphumanservice/REST/Confirm/Backend.pm line 55
+'
+               }, 'DBIx::Class::Exception' );
+ // main:67
+[2013/02/03 01:03:07] [ERROR] - [_save_goals]$VAR1 = bless( {
+                 'msg' => 'DBIx::Class::ResultSet::find_or_create(): DBI Exception: DBD::mysql::st execute failed: Column \'name\' cannot be null [for Statement "INSERT INTO goals ( name, project_id) VALUES ( ?, ? )" with ParamValues: 0=undef, 1=\'2\'] at /home/plcgi/www/woa-toolkit/apps/Alphumanservice/lib/Alphumanservice/REST/Confirm/Backend.pm line 55
+'
+               }, 'DBIx::Class::Exception' );
+ // main:67
+[2013/02/03 01:12:50] [ERROR] - [_save_goals]$VAR1 = bless( {
+                 'msg' => 'DBIx::Class::ResultSet::find_or_create(): DBI Exception: DBD::mysql::st execute failed: Column \'name\' cannot be null [for Statement "INSERT INTO goals ( name, project_id) VALUES ( ?, ? )" with ParamValues: 0=undef, 1=\'2\'] at /home/plcgi/www/woa-toolkit/apps/Alphumanservice/lib/Alphumanservice/REST/Confirm/Backend.pm line 56
+'
+               }, 'DBIx::Class::Exception' );
+ // main:70
+[2013/02/03 01:13:30] [ERROR] - [_save_goals]$VAR1 = bless( {
+                 'msg' => 'DBIx::Class::ResultSet::find_or_create(): DBI Exception: DBD::mysql::st execute failed: Column \'name\' cannot be null [for Statement "INSERT INTO goals ( name, project_id) VALUES ( ?, ? )" with ParamValues: 0=undef, 1=\'2\'] at /home/plcgi/www/woa-toolkit/apps/Alphumanservice/lib/Alphumanservice/REST/Confirm/Backend.pm line 56
+'
+               }, 'DBIx::Class::Exception' );
+ // main:70

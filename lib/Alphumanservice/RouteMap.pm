@@ -11,15 +11,15 @@ my $rules = [
     
     { path => '/ahs/auth$', class => 'Alphumanservice::REST::Auth::SP' },
     
-    { path => '/ahs/goals', class => 'Alphumanservice::REST::Goals::SP' },
+    { path => '/ahs/goals$', class => 'Alphumanservice::REST::Goals::SP' },
     
-    { path => '/ahs/contacts', class => 'Alphumanservice::REST::Contacts::SP' },
+    { path => '/ahs/project$', class => 'Alphumanservice::REST::Project::SP' },
     
     { path => '/ahs/part-form/confirm$', class => 'Alphumanservice::REST::Confirm::SP' },
     
     { path => '/ahs/usersdata$', class => 'Alphumanservice::REST::UserData::SP' },
     
-    { path => '/ahs/geodata', class => 'Alphumanservice::REST::GeoData::SP' },
+    { path => '/ahs/geodata$', class => 'Alphumanservice::REST::GeoData::SP' },
     
     { path => '/part-form/part', class => 'Alphumanservice::Page::Part' },
     
@@ -27,7 +27,7 @@ my $rules = [
     
     { path => '/part-form/place', class => 'Alphumanservice::Page::Place' },
     
-    { path => '/part-form/contacts', class => 'Alphumanservice::Page::Contacts' },
+    { path => '/part-form/project', class => 'Alphumanservice::Page::Project' },
     
 ];
 

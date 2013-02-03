@@ -5,7 +5,7 @@
   window.ahs.pages.goals.Main = {};
   
   var model = window.ahs.collections.Common.initialize({data:goals,url:'/ahs/goals'});
-  var model_for_all = window.ahs.collections.Common.initialize({data:goals,url:'/ahs/registration/confirm'});
+  var model_for_all = window.ahs.collections.Common.initialize({data:goals,url:'/ahs/part-form/confirm'});
   
   var ListView = Backbone.List.View.extend({
     template : $('#listTpl').html(),

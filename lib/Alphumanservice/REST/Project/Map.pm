@@ -1,10 +1,10 @@
-package Alphumanservice::REST::Contacts::Map;
+package Alphumanservice::REST::Project::Map;
 use strict;
 
 my $map = [
     {
         # regexp or absolute value for url to service
-        regexp    => '/ahs/contacts',
+        regexp    => '/ahs/project$',
         # func name in Backend module
         func_name => 'save',
         # unique name for service - used in javascript validator rules
@@ -14,18 +14,9 @@ my $map = [
             param         => [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
-                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for geo coordinates" },
+                { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for 'id'" },
                 { name => 'user_id',    rules => [ {rule => 'integer' } ], required => 1,error => "Bad value for user_id" },
-                { name => 'fname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'fname'" },
-                { name => 'mname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'mname'" },
-                { name => 'lname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'lname'" },
-                { name => 'phone1',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'phone'" },
-                { name => 'phone2',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'mphone1'" },
-                { name => 'phone3',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'mphone2'" },
-                { name => 'email',     rules => [ {rule => 'email' } ], required => 1,error => "Bad value for 'email'" },
-                { name => 'skype',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'skype'" },
-                { name => 'icq',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'icq'" },
-                { name => 'twitter',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'twitter'" },
+                { name => 'name',     rules => [ {rule => 'anyText' } ], required => 1, error => "Bad value for 'name'" },
             ]
         },
         # service output description

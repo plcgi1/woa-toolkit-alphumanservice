@@ -1,15 +1,40 @@
-package Alphumanservice::REST::Contacts::Backend;
+package Alphumanservice::REST::Project::Backend;
 use common::sense;
 use parent 'Alphumanservice::Component::TemporaryService';
 use Data::Dumper;
 
 sub new {
     my($class,$param) = @_;
-	$param->{key} = 'contacts';
+	$param->{key} = 'project_data';
     my $self = $class->SUPER::new($param);
     bless $self,$class;
 
     return $self;
+}
+
+sub save {
+    my ( $self, $param ) = @_;
+
+    my $config  = $self->get_config;
+    my $session = $self->get_session();
+    my $model   = $self->get_model;
+    my $key = $self->get_key;
+    my $rs;
+	my $data = $session->{$key};
+    
+	unless ( $data ) {
+    	$data = {};
+    }
+    
+    $data->{name} = $param->{name};
+    $session->{$key} = $data;
+    my $res = $self->_hash_to_array($session->{$key});
+    
+    return $res;
+}
+
+sub _hash_to_array {
+	return $_[1];
 }
 1;
 

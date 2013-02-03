@@ -10,6 +10,7 @@ perl_version('5.10.1');
 
 # Specific dependencies
 requires 'Module::Install';
+requires 'Try::Tiny';
 requires 'Plack';
 requires 'Plack::Middleware::Session';
 requires 'Plack::Middleware::Log4perl';

@@ -1,7 +1,7 @@
 <div class="page-header">
             <h4>Паспортные данные</h4>
           </div>
-<div class="control-group">
+            <div class="control-group">
             <label class="control-label">Фамилия</label>
             <div class="controls">
               <input type="text" class="input-large" name="lname" id="lname"> 

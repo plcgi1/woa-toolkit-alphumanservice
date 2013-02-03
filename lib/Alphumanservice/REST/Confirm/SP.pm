@@ -1,7 +1,7 @@
-package Alphumanservice::REST::Contacts::SP;
+package Alphumanservice::REST::Confirm::SP;
 use strict;
-use Alphumanservice::REST::Contacts::Backend;
-use Alphumanservice::REST::Contacts::Map;
+use Alphumanservice::REST::Confirm::Backend;
+use Alphumanservice::REST::Confirm::Map;
 use Alphumanservice::REST::Engine;
 use Alphumanservice::REST::View;
 
@@ -19,7 +19,7 @@ sub service_object {
     my ( $self, $env ) = @_;
 
     my $view    = Alphumanservice::REST::View->new();
-    my $backend = Alphumanservice::REST::Contacts::Backend->new(
+    my $backend = Alphumanservice::REST::Confirm::Backend->new(
         {
             model     => $env->{model},
             formatter => $env->{formatter},
@@ -31,7 +31,7 @@ sub service_object {
 
     my $rest = Alphumanservice::REST::Engine->new(
         {
-            map       => Alphumanservice::REST::Contacts::Map->get_map,
+            map       => Alphumanservice::REST::Confirm::Map->get_map,
             backend   => $backend,
             view      => $view,
             session   => $env->{session},
@@ -47,7 +47,7 @@ sub service_object {
 
 __END__
 
-=head1 Alphumanservice::REST::Contacts
+=head1 Alphumanservice::REST::Confirm
 
 
 =head2 SYNOPSIS
