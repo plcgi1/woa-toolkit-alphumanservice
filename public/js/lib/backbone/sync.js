@@ -144,13 +144,8 @@ Backbone.sync = function(method, model, options) {
     opts.success = function(collection,data){
         location.hash = '';
         count++;
-        console.log(count);
+        //console.log(count);
         if(success){
-            //if( method !='delete'){
-                //console.log(collection);
-                //model = collection;
-            //}
-            
             success(collection,data);
             //console.log(success);
         }

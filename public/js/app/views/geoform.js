@@ -8,11 +8,8 @@
     form: $('#geoplace').formParser(),
     content: null,
     infowindow: null,
-    events : {
-      'click .save' : 'save'
-    },
+   
     initialize: function(){
-      //_.bind(this,'save_data');
       this.content = $('#geoplace').html();
       this.infowindow = new google.maps.InfoWindow({});
     },
@@ -30,7 +27,7 @@
       this.infowindow.open(map,marker);
       var self = this;
       
-      $('.save').live('click',function(){
+      $('.save').on('click',function(){
         self.save();
       });
     },
