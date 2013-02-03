@@ -1,2 +1,2 @@
 USER=`whoami`
-plackup -R /home/${USER}/www/woa-toolkit/apps/Alphumanservice/lib -I/home/${USER}/www/woa-toolkit/apps/Alphumanservice/lib -p 3030 -a /home/${USER}/www/woa-toolkit/apps/Alphumanservice/psgi/Alphumanservice.psgi
+plackup -R /home/${USER}/www/woa-toolkit/apps/Alphumanservice/lib -I/home/${USER}/www/woa-toolkit/plack/lib -I/home/${USER}/www/woa-toolkit/core/lib -I/home/${USER}/www/woa-toolkit/apps/Alphumanservice/lib -p 3030 -a /home/${USER}/www/woa-toolkit/apps/Alphumanservice/psgi/Alphumanservice.psgi
