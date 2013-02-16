@@ -14,11 +14,13 @@
       this.infowindow = new google.maps.InfoWindow({});
     },
     set_data:function(geodata){
-      this.form.valuesToForm({
-        lattitude : geodata[0].lattitude,
-        longtitude : geodata[0].longtitude,
-        name: geodata[0].name
-      });
+      if(geodata && geodata.length>0) {
+        this.form.valuesToForm({
+          lattitude : geodata[0].lattitude,
+          longtitude : geodata[0].longtitude,
+          name: geodata[0].name
+        });
+      }
     },
     open: function(map,marker,lng,lat){
       var content = $('#geoplace').html();
@@ -34,7 +36,7 @@
     save: function(event){
       var data = this.form.fieldsToHash();
       data.name = $('#name').val();
-      console.log(data);
+      //console.log(data);
       this.collection.reset(data);
       // сохранить в модель
       this.collection.create(data);

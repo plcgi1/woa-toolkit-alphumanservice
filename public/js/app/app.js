@@ -13,14 +13,13 @@ ahs.views       = {};
 ahs.pages       = {};
 
 $(document).ready(function(){
-    //setTimeout(function(){
-        if( !ahs.config.history_started ){
-            Backbone.history || (Backbone.history = new Backbone.History);
-            Backbone.history.start();
-            ahs.config.history_started = true;
-        }
-    //},1);
-
+	
+	if( !ahs.config.history_started ){
+		Backbone.history || (Backbone.history = new Backbone.History);
+		Backbone.history.start();
+		ahs.config.history_started = true;
+	}
+    
     $('.dropdown-toggle').dropdown();
 	$('.dropdown input, .dropdown label, #loginFrm .btn').click(function(e) {
 		e.stopPropagation();

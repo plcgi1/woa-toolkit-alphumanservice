@@ -131,7 +131,7 @@ Backbone.sync = function(method, model, options) {
     options.error = function(res,err){
         try {
             var data = $.parseJSON(res.responseText);
-            window.ahs.ErrorVis.show_errors(data);
+            window.ErrorVis.show_errors(data);
         }
         catch(e){
             alert(e);

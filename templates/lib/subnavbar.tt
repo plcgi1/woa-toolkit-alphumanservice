@@ -1,0 +1,23 @@
+[%FOREACH item IN acl%]
+    [%IF item.name == active && item.children%]
+    [%SET nav=item.children%]
+    [%END%]
+[%END%]
+[%IF nav%]
+    <div class="nav-collapse">
+        <ul class="nav nav-tabs">
+            [%FOREACH item IN nav%]
+                [%UNLESS item.hide_from_menu%]
+                    [%SET path=item.path%]
+                    [%IF debug==1%][%SET path=item.path _ '?debug=1'%][%END%]
+                    [%IF item.name==subactive%]
+                    <li class="active"><a href="[%path%]">[%item.title%]</a></li>
+                    [%ELSE%]
+                    <li><a href="[%path%]">[%item.title%]</a></li>
+                    [%END%]
+                [%END%]
+            [%END%]
+        </ul>
+    </div>
+[%END%]
+

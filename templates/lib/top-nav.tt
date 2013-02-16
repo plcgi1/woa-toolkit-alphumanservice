@@ -3,6 +3,7 @@
     <div class="navbar-inner">
       <div class="container">
         <div class="navbar-content">
+          <nav>
           <ul class="nav">
             [%FOREACH item IN nav%]
               [%IF item.parentid%][%next%][%END%]
@@ -10,6 +11,8 @@
               <li class="[%item.class%]"><a href="[%path%]">[%item.title%]</a></li>
             [%END%]
           </ul>
+          </nav>
+          <nav>
           <ul class="nav pills pull-right">
             <li class="dropdown" id="usermenu">
               
@@ -38,12 +41,13 @@
                   <input id="password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
                   <input id="remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
                   <label class="string optional" for="remember_me"> Запомнить</label>
-                  <a class="btn btn-primary login" role="btn" href="#">Вход</a>
+                  <a class="btn btn-primary login" id="loginBtn" role="btn" href="#">Вход</a>
                 </form>
               </div>
               [%END%]  
             </li>  
           </ul>
+          </nav>
         </div>
       </div>
     </div>

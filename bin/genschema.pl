@@ -17,10 +17,10 @@ GetOptions(
 pod2usage(1) if $help;
 
 my $wcp = WOA::Config::Provider->new();
-my $config = $wcp->get_config($Bin.'/../etc/Alphumanservice.conf');
+my $config = $wcp->get_config($Bin.'/../etc/Ahs.conf');
 
 make_schema_at(
-    "Alphumanservice::Model::DBIx",
+    "Ahs::Model::DBIx",
     { debug => 1, dump_directory => './lib' },
     [ $config->{connect_info}->[0],$config->{connect_info}->[1],$config->{connect_info}->[2] ]
 );

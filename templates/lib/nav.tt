@@ -1,8 +1,7 @@
-[%#subnav | dump%]
 <ul class="nav nav-tabs">
   [%FOREACH item IN subnav%]
   <li class="[%item.class%]">
-    <a href="[%item.url%]">[%item.title%]</a> 
+    <a href="[%item.path%]">[%item.title%]</a> 
   </li>
   [%END%]
 </ul>

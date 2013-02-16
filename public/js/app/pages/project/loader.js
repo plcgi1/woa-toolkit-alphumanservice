@@ -17,6 +17,7 @@ window.modules = {
         "/js/lib/mustache.js",
         "/js/lib/jquery.formParser.js",
         "/js/lib/bootstrap/bootstrap-dropdown.js",
+        "/js/lib/bootstrap/bootstrap-datepicker.js",
         "/js/lib/underscore.js",
         "/js/lib/backbone.js",
         

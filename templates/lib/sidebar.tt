@@ -1,0 +1,11 @@
+<script id="navBarTpl" type="text/html">
+<div class="span2 nav" id="sidebar">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            {{each (projects)}}
+                <li class="active"><a href="?id=${ id}">${ name}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+</script>

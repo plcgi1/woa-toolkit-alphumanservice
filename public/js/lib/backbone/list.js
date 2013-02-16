@@ -21,13 +21,13 @@
         form: null,
         dialog: null,
 		showdialog: null,
+		pubsub: null,
 		saved : 0,
         /*default events for form*/
         events: {
             'click a.remove' : 'remove',
             'click a.add' : 'add',
-            'click a.edit' : 'edit',
-            'click a.save' : 'save'
+            'click a.edit' : 'edit'
         },
         initialize: function(opts) {
             //console.log(this.events);
@@ -36,10 +36,15 @@
 			var self = this;
 			this.form = this.dialog.formParser();
 			this.showdialog = 1;
-            this.dialog.find('.save').live('click',function(el){
+            this.dialog.find('.save').on('click',function(el){
                 self.save(el);
             });
 			
+			$(this.dialog).on('hide',function(){
+				self.form.clear();
+			});
+			this.pubsub = new Backbone.Model();
+
             $.extend(this,opts);
 			this.showdialog = opts.showdialog;
         },
@@ -54,11 +59,10 @@
 			
             var url = this.collection.url + '?id=' + id;
 			var self = this;
-			//alert('rem');
             m.destroy({
 				url: url,
 				success:function(data){
-					//self.collection.reset(data);
+					self.collection.remove(data);
 					self.render();
 				}
 			});
@@ -90,19 +94,22 @@
 						self.collection.reset(data);
 						self.render();
 						self.saved = 1;
-						self.form.clear();
+						
 						if( self.showdialog == 1 ){
 							self.dialog.modal('toggle');
+							self.saved = 0;
 						}
+						self.form.clear();
+						self.pubsub.trigger('list:saved','OK');
 					}
 				});
 			}
+			
         },
         render: function(){
             var list = this.collection.toJSON();
-			//console.log(list);
             var markup = Mustache.render(this.template, { list : list });
-            $(this.el).html(markup);
+            $(this.el).empty().slideDown(1600).html(markup);
         }
     });
 }).call(this);

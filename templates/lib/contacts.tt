@@ -1,0 +1,81 @@
+<form name="contacts" id="contacts" action="/ahs/settings/contacts">
+<div class="page-header">
+  <h4>Контакты</h4>
+</div>
+<div>
+<span class="span5">
+<div class="control-group">
+  <label class="control-label">Фамилия</label>
+  <div class="controls">
+    <input type="text" class="span4" name="lname" id="lname" value="[%lname%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Имя</label>
+  <div class="controls">
+    <input type="text" class="span4" name="fname" id="fname" value="[%fname%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Отчество</label>
+  <div class="controls">
+    <input type="text" class="span4" name="mname" id="mname" value="[%mname%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Городской телефон</label>
+  <div class="controls">
+    <input type="text" class="span4" name="phone1" id="phone1" value="[%phone1%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Мобильный телефон</label>
+  <div class="controls">
+    <input type="text" class="span4" name="phone2" id="phone2" value="[%phone2%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Мобильный телефон</label>
+  <div class="controls">
+    <input type="text" class="span4" name="phone3" id="phone3" value="[%phone3%]"> 
+  </div>
+</div>
+</span>
+<span class="span5">
+<div class="control-group">
+  <label class="control-label">EMAIL</label>
+  <div class="controls">
+    <input type="text" class="span4" name="email" id="email" value="[%email%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">ICQ</label>
+  <div class="controls">
+    <input type="text" class="span4" name="icq" id="icq" value="[%icq%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Skype</label>
+  <div class="controls">
+    <input type="text" class="span4" name="skype" id="skype" value="[%skype%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Twitter</label>
+  <div class="controls">
+    <input type="text" class="span4" name="twitter" id="twitter" value="[%twitter%]"> 
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">Адрес</label>
+  <div class="controls">
+    <textarea class="span4" name="address" id="address">[%address%]</textarea> 
+  </div>
+</div>
+</span>
+</div>
+<div class="middle">
+  <a class="btn btn-primary save" href="#/ahs/settings/contacts" data-role="save">Сохранить</a>
+  <a class="btn" href="#cancel" data-role="cancel"><span class="btn-label">Отмена</span></a> 
+</div>
+</form>

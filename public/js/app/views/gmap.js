@@ -31,7 +31,7 @@
       if( window.geodata && window.geodata.length>0 ){
         position = new google.maps.LatLng(window.geodata[0].lattitude,window.geodata[0].longtitude);
       }
-      //console.log(coords);
+      //console.log(geodata.length);
       this.map_options = {
         zoom: 4,
         center: position,

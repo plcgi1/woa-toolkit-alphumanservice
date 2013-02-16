@@ -1,6 +1,6 @@
 ;(function(ErrorVis){
-    window.ahs.ErrorVis = window.ahs.ErrorVis || {};
-	window.ahs.ErrorVis.show_errors = function(error_fields){
+    window.ErrorVis = window.ErrorVis || {};
+	window.ErrorVis.show_errors = function(error_fields){
 		//console.log(error_fields);
 		// clear all fields from error classes
 		$('.input').removeClass('error');

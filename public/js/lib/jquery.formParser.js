@@ -159,6 +159,7 @@ var valuesToQs = function(data){
                 var n = $(this).attr('name');
                 var t = $(this).attr('type');
                 var tag = this.tagName.toLowerCase();
+                
                 if ( inExclude(exludeArr,n) ){
                     return;
                 }
@@ -167,7 +168,9 @@ var valuesToQs = function(data){
                     $(this).val('');
                 }
                 else if ( tag == 'textarea' ){
-                    $(this).html(dataHash[n]);
+                    
+                    $(this).val(dataHash[n]);                    
+                    $(this).html(dataHash[n]);                    
                 }
                 else if ( t == 'button' ){}
                 else if ( t == 'checkbox' || t == 'radio' ) {
@@ -242,8 +245,10 @@ var valuesToQs = function(data){
             for(key in data) {
                 data[key] = '';
             }
+            
             me.valuesToForm(data);
-         };
+        };
+        
         return this;
     };
 })(jQuery);

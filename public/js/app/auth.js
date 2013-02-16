@@ -4,25 +4,8 @@
     var url = '/ahs/auth';
     var token = '123';
     window.ahs.Auth = window.ahs.Auth || {};
-    //var View = Backbone.View.extend({
-    //    el : $('#loginFrm'),
-    //    events: {
-    //        'click a.login': 'login',
-    //        'click a.logout': 'logout'
-    //    },
-    //    initialize: function(opts) {
-    //        var self = this;
-    //        _.bindAll(this);
-    //    },
-    //    login: function(el) {
-    //        alert('login');
-    //    },
-    //    logout: function(el) {
-    //        alert('logout');
-    //    }
-    //});
-    //window.ahs.Auth.view = new View();
-    $('.login').click(function(){
+    
+    $('.login').one('click',function(){
         var data = $('#loginFrm').formParser().fieldsToHash();
         data.token = token;
         $.ajax({
@@ -32,8 +15,6 @@
             type : 'POST',
             success:function(response){
                 location.reload();
-                // перерисоавть меню
-                //$('.dropdown').dropdown('toggle');
             },
             error: function(response){
                 alert('error');
@@ -41,7 +22,7 @@
             }
         });
     });
-    $('.logout').click(function(){
+    $('.logout').one('click',function(){
         $.ajax({
             url : url,
             dataType : 'json',
