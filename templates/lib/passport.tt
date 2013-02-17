@@ -4,55 +4,60 @@
 <div class="control-group">
 <label class="control-label">Фамилия</label>
 <div class="controls">
-  <input type="text" class="span4" name="lname" id="lname"> 
+  <input type="text" class="span4" name="lname" id="lname" value="[%lname%]"> 
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Имя</label>
 <div class="controls">
-  <input type="text" class="span4" name="fname" id="fname"> 
+  <input type="text" class="span4" name="fname" id="fname" value="[%fname%]"> 
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Отчество</label>
 <div class="controls">
-  <input type="text" class="span4" name="mname" id="mname"> 
+  <input type="text" class="span4" name="mname" id="mname" value="[%mname%]"> 
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Серийный номер</label>
 <div class="controls">
-  <input type="text" class="span4" name="serial" id="serial"> 
+  <input type="text" class="span4" name="serial" id="serial" value="[%serial%]"> 
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Номер</label>
 <div class="controls">
-  <input type="text" class="span4" name="passport_number" id="passport_number"> 
+  <input type="text" class="span4" name="number" id="number" value="[%number%]"> 
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Выдан</label>
 <div class="controls">
-  <textarea name="place" id="place"></textarea>
+  <textarea name="place" id="place_of_birth">value="[%place_of_birth%]"</textarea>
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Дата выдачи</label>
-<div class="controls">
-  <input type="text" class="span4" name="input_date" id="input_date"> 
+<div class="">
+  <span class="controls input-append date" data-date="[%received%]" data-date-format="dd-mm-yyyy">
+    <input class="" size="16" type="text" value="[%received%]" name="received" readonly>
+    <span class="add-on"><i class="icon-calendar"></i></span>
 </div>
 </div>
 
 <div class="control-group">
 <label class="control-label">Дата рождения</label>
-<div class="controls">
-  <input type="text" class="span4" name="birth_date" id="birth_date"> 
+<div class="">
+    <span class="controls input-append date" data-date="[%date_of_birth%]" data-date-format="dd-mm-yyyy">
+    <input class="" size="16" type="text" value="[%date_of_birth%]" name="date_of_birth" readonly>
+    <span class="add-on"><i class="icon-calendar"></i></span>
+</span>
 </div>
 </div>
 <div class="control-group">
 <label class="control-label">Место рождения</label>
 <div class="controls">
-  <input type="text" class="span4" name="birth_place" id="birth_place"> 
+  <input type="text" class="span4" name="place_of_birth" id="place_of_birth" value="[%place_of_birth%]"> 
 </div>
 </div>

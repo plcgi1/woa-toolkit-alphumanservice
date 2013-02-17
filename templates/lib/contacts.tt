@@ -1,4 +1,4 @@
-<form name="contacts" id="contacts" action="/ahs/settings/contacts">
+<form name="form" id="form" action="/ahs/settings/contacts">
 <div class="page-header">
   <h4>Контакты</h4>
 </div>

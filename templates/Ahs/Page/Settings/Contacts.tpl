@@ -5,7 +5,7 @@
   ];
   SET jscr=[
     '/js/app/config.js',
-    '/js/app/pages/settings/contacts/loader.js',    
+    '/js/app/pages/settings/loader.js',    
     '/js/lib/loader.js',
   ];
 %]

@@ -1,14 +1,21 @@
-package Ahs::Page::Settings::Contacts;
+package Ahs::Page::Settings;
 use common::sense;
 use base 'Ahs::Page';
 use Data::Dumper;
 use Ahs::REST::Settings::Contacts::Backend;
+use Ahs::REST::Settings::Passport::Backend;
 
 sub get_map {
     my $map = [
         {
             regexp    => '/settings/contacts',
-            func_name => 'index',
+            func_name => 'contacts',
+            out       => { mime_type => 'text/html', view_method => 'as_html' },
+            req_method => 'GET'
+        },
+        {
+            regexp    => '/settings/passport',
+            func_name => 'passport',
             out       => { mime_type => 'text/html', view_method => 'as_html' },
             req_method => 'GET'
         },
@@ -16,7 +23,7 @@ sub get_map {
     return $map;
 }
 
-sub index {
+sub contacts {
     my ( $self, $param ) = @_;
 
     my $config  = $self->get_config;
@@ -25,7 +32,10 @@ sub index {
     
     if($session->{user}){
         my $be = Ahs::REST::Settings::Contacts::Backend->new({
-            session => $session,config=>$config,model => $self->get_model
+            session =>  $session,
+            config  =>  $config,
+            model   =>  $self->get_model,
+            formatter => $self->get_formatter
         });
         my $rs = $be->get();
         foreach ( keys %$rs ) {
@@ -34,6 +44,32 @@ sub index {
     }
     
     $self->get_stash->{template} = 'Ahs/Page/Settings/Contacts.tpl';
+
+    return $self->get_stash;
+}
+
+sub passport {
+    my ( $self, $param ) = @_;
+
+    my $config  = $self->get_config;
+    my $session = $self->get_session();
+    my $fmt     = $self->get_formatter;
+    
+    if($session->{user}){
+        my $be = Ahs::REST::Settings::Passport::Backend->new({
+            session =>  $session,
+            config  =>  $config,
+            model   =>  $self->get_model,
+            formatter => $self->get_formatter
+        });
+        my $rs = $be->get({user_id=>$session->{user}->{id}});
+        foreach ( keys %$rs ) {
+            $self->get_stash->{$_} = $rs->{$_}; 
+        }
+        warn Dumper $rs;
+    }
+    
+    $self->get_stash->{template} = 'Ahs/Page/Settings/Passport.tpl';
 
     return $self->get_stash;
 }

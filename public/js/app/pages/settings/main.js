@@ -1,17 +1,18 @@
 ;
 (function(Main) {
   'use strict';
-  window.ahs.pages.contacts = {};
-  window.ahs.pages.contacts.Main = {};
+  window.ahs.pages.settings = {};
+  window.ahs.pages.settings.Main = {};
   
-  var model = window.ahs.collections.Common.initialize({data:contacts});
+  var model = window.ahs.collections.Common.initialize({data:[]});
     
   var View = Backbone.AjaxForm.View.extend({
-    el:$('#contacts')
+    el:$('#form')
   });
   var list_view = new View({
     collection: model
   });
+  $('.date').datepicker();
 })();
 
 $(document).ready(function() {

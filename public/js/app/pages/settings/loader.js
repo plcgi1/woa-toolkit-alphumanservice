@@ -26,12 +26,12 @@ window.modules = {
         "/js/lib/errorvis.js",
         "/js/lib/bootstrap/bootstrap-modal.js",
         "/js/lib/backbone/sync.js",
-        "/js/lib/backbone/list.js",
+        "/js/lib/backbone/ajaxform.js",
         "/js/app/config.js",
         "/js/app/auth.js",
         "/js/app/collections/common.js",
         "/js/app/helpers/marker.js",        
-        "/js/app/pages/passport/main.js"        
+        "/js/app/pages/settings/main.js"        
     ]   
 };
 

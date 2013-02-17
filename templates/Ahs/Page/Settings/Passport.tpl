@@ -5,7 +5,7 @@
   ];
   SET jscr=[
     '/js/app/config.js',
-    '/js/app/pages/settings/passport/loader.js',    
+    '/js/app/pages/settings/loader.js',    
     '/js/lib/loader.js',
   ];
 %]
@@ -17,7 +17,14 @@
         <div class="well">
             [%INCLUDE "lib/nav.tt"%]
             <div class="well">
-                PASSPORT DATA				
+			  <form name="form" id="form" action="/ahs/settings/passport">
+                [%INCLUDE "lib/passport.tt"%]
+				<div class="middle">
+  <a class="btn btn-primary save" href="#/ahs/settings/contacts" data-role="save">Сохранить</a>
+  <a class="btn" href="#cancel" data-role="cancel"><span class="btn-label">Отмена</span></a> 
+</div>
+			  </form>
+				
             </div>
         </div>
     </div>

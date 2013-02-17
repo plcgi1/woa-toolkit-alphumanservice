@@ -1,7 +1,8 @@
-package Ahs::REST::Settings::Contacts::Backend;
+package Ahs::REST::Settings::Passport::Backend;
 use common::sense;
 use base 'Ahs::REST::Backend';
 use Data::Dumper;
+
 
 sub save {
     my ( $self, $param ) = @_;
@@ -9,24 +10,27 @@ sub save {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $model = $self->get_model;
+    my $fmt = $self->get_formatter;
     
-    my $rs = $model->resultset('UserInfo')->single(
+    my $rs = $model->resultset('PassportData')->single(
         {'user_id' => $session->{user}->{id} },
     );
     my $u = $model->resultset('User')->single(
         {'id' => $session->{user}->{id} },
     );
+        
     if ( $rs ) {
-        $rs->phone1($param->{phone1});
-        $rs->phone1($param->{phone2});
-        $rs->phone1($param->{phone3});
-        $rs->phone1($param->{icq});
-        $rs->phone1($param->{skype});
-        $rs->phone1($param->{twitter});
-        $rs->phone1($param->{address});
+        $rs->serial($param->{serial});
+        $rs->number($param->{number});
+        $rs->received($fmt->to_uts({date=>$param->{received}}));
+        $rs->place($param->{place});
+        $rs->date_of_birth(
+            $fmt->to_uts( {date => $param->{date_of_birth} })
+        );
+        $rs->place_of_birth($param->{place_of_birth});
+        
         $rs->update();
         
-        $u->email($param->{email});
         $u->fname($param->{fname});
         $u->lname($param->{lname});
         $u->mname($param->{mname});
@@ -46,25 +50,28 @@ sub get {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $model = $self->get_model;
+    my $fmt = $self->get_formatter;
     
-    my @rs = $model->resultset('UserInfo')->search(
-        {user_id=>$session->{user}->{id}},
+    my @rs = $model->resultset('PassportData')->search(
+        { user_id => $session->{user}->{id} },
         {
             join => [qw/user/],
-            select => [qw/me.skype me.phone1 me.phone2 me.phone3 me.skype me.twitter me.address user.fname user.lname user.mname user.email/],
-            as => [qw/skype phone1 phone2 phone3 skype twitter address fname lname mname email/],
+            select => [qw/me.serial me.number me.received me.place me.date_of_birth me.place_of_birth user.fname user.lname user.mname user.email/],
+            as => [qw/serial number received place date_of_birth place_of_birth fname lname mname email/],
             limit => 1
         }
     );
     
     # make return with values - for tests
     my $res;
-    foreach ( qw/skype phone1 phone2 phone3 skype twitter address fname lname mname email/ ) {
+    foreach ( qw/serial number received place date_of_birth place_of_birth fname lname mname email/ ) {
         $res->{$_} = $rs[0]->get_column($_);
     }
-
+    $res->{received} = (split ' ',$fmt->format_ts($res->{received}))[0];
+    $res->{date_of_birth} = (split ' ',$fmt->format_ts($res->{date_of_birth}))[0];
     return $res;
 }
+
 
 sub remove {
     my ( $self, $param ) = @_;
@@ -76,13 +83,16 @@ sub remove {
     my $res = { status => 'ok' };
 
     return $res;
+
 }
+
+
 
 1;
 
 __END__
 
-=head1 Ahs::REST::Settings::Contacts::Backend
+=head1 Ahs::REST::Settings::Passport::Backend
 
 
 =head2 SYNOPSIS
