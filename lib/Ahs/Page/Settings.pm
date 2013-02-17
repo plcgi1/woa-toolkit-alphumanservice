@@ -66,7 +66,6 @@ sub passport {
         foreach ( keys %$rs ) {
             $self->get_stash->{$_} = $rs->{$_}; 
         }
-        warn Dumper $rs;
     }
     
     $self->get_stash->{template} = 'Ahs/Page/Settings/Passport.tpl';
