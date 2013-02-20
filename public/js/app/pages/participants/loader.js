@@ -17,6 +17,7 @@ window.modules = {
         "/js/lib/mustache.js",
         "/js/lib/jquery.formParser.js",
         "/js/lib/bootstrap/bootstrap-dropdown.js",
+        "/js/lib/bootstrap/bootstrap-button.js",
         "/js/lib/underscore.js",
         "/js/lib/backbone.js",
         
@@ -29,7 +30,7 @@ window.modules = {
         "/js/app/config.js",
         "/js/app/auth.js",
         "/js/app/collections/common.js",
-        "/js/app/helpers/marker.js",        
+        "/js/app/helpers/marker.js",      
         "/js/app/pages/participants/main.js"        
     ]   
 };

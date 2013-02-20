@@ -14,7 +14,7 @@ my $rules = [
     { path => '/ahs/goals', class => 'Ahs::REST::Goals::SP' },
     
     { path => '/ahs/project$', class => 'Ahs::REST::Project::SP' },
-    
+    { path => '/ahs/participants$', class => 'Ahs::REST::Participants::SP' },
     { path => '/ahs/settings/contacts', class => 'Ahs::REST::Settings::Contacts::SP' },
     { path => '/ahs/settings/passport', class => 'Ahs::REST::Settings::Passport::SP' },
     

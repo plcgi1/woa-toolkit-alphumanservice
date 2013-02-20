@@ -2,6 +2,7 @@ package Ahs::Page::Participants;
 use common::sense;
 use base 'Ahs::Page';
 use Data::Dumper;
+use Ahs::REST::Participants::Backend;
 
 sub get_map {
     my $map = [
@@ -22,7 +23,11 @@ sub index {
     my $config  = $self->get_config;
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
-
+    my $be = Ahs::REST::Participants::Backend->new({
+        session => $session, config => $config, formatter => $fmt, model => $self->get_model
+    });
+    $self->get_stash->{users} = $be->get();
+    
     $self->get_stash->{template} = 'Ahs/Page/Participants.tpl';
 
     return $self->get_stash;

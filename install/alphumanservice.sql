@@ -33,9 +33,12 @@ CREATE TABLE `action` (
   `type` varchar(10) NOT NULL,
   `siteid` bigint(20) NOT NULL,
   `parentid` bigint(20) DEFAULT NULL,
+  `is_public` tinyint(1) DEFAULT '0',
+  `order_by` int(11) DEFAULT '1',
+  `place` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `action_name_idx` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +47,7 @@ CREATE TABLE `action` (
 
 LOCK TABLES `action` WRITE;
 /*!40000 ALTER TABLE `action` DISABLE KEYS */;
-INSERT INTO `action` VALUES (1,'PART_REG','Регистрация участников','/part-form/place','[\"GET\"]',1358105448,1358105448,'page',0,NULL),(2,'PART_PLACE','Куда','/part-form/place','[\"GET\"]',1358105448,1358105448,'page',0,1),(3,'PART_PART','Участники','/part-form/part','[\"GET\"]',1358105448,1358105448,'page',0,1),(4,'PART_GOALS','Цели','/part-form/goals','[\"GET\"]',1358105448,1358105448,'page',0,1),(5,'PART_CONTACTS','Контакты','/part-form/contacts','[\"GET\"]',1359307653,1359307653,'page',0,1);
+INSERT INTO `action` VALUES (1,'NEW_PROJECT','Новый проект','/part-form/project','[\"GET\"]',1358105448,1358105448,'page',0,NULL,0,1,NULL),(2,'PART_PLACE','Куда','/part-form/place','[\"GET\"]',1358105448,1358105448,'page',0,1,0,2,NULL),(3,'PART_PART','Участники','/part-form/part','[\"GET\"]',1358105448,1358105448,'page',0,1,0,3,NULL),(4,'PART_GOALS','Цели','/part-form/goals','[\"GET\"]',1358105448,1358105448,'page',0,1,0,4,NULL),(5,'PART_PROJECT','Проект','/part-form/project','[\"GET\"]',1359307653,1359307653,'page',0,1,0,1,NULL),(6,'PAGE_PROJECTS','Проекты','/projects','[\"GET\"]',1360014305,1360014305,'page',0,NULL,1,1,NULL),(7,'PAGE_PARTICIPANTS','Участники','/participants','[\"GET\"]',1360254702,1360254702,'page',0,NULL,1,1,NULL),(8,'REST_LOGIN','Логин','/ahs/auth','[\"POST\",\"DELETE\"]',1360255039,1360255039,'rest',0,NULL,1,1,NULL),(9,'PAGE_ABOUT','О проекте','/about','[\"GET\"]',1360272368,1360272368,'page',0,NULL,1,1,NULL),(10,'REST_GOALS','Цели проекта','/ahs/goals','[\"POST\",\"DELETE\"]',1360449184,1360449184,'rest',0,NULL,0,1,NULL),(11,'REST_PROJECT','Название проекта','/ahs/project','[\"POST\",\"DELETE\"]',1360449662,1360449662,'rest',0,NULL,0,1,NULL),(12,'REST_USERSDATA','Участники проекта','/ahs/usersdata','[\"POST\",\"DELETE\"]',1360449781,1360449781,'rest',0,NULL,0,1,NULL),(13,'REST_GEODATA','Место проекта','/ahs/geodata','[\"POST\",\"DELETE\"]',1360449825,1360449825,'rest',0,NULL,0,1,NULL),(14,'SETTINGS','Мои данные','/settings/contacts','[\"GET\"]',1360511521,1360511521,'page',0,NULL,0,100,'hidden'),(15,'CONTACTS','Контакты','/settings/contacts','[\"GET\"]',1360511627,1360511627,'page',0,14,0,101,'hidden'),(16,'PASSPORT_DATA','Паспортные данные','/settings/passport','[\"GET\"]',1360975353,1360975353,'page',0,14,0,102,'hidden'),(17,'REST_CONTACTS','Контакты','/ahs/settings/contacts','[\"DELETE\",\"GET\",\"POST\"]',1360975725,1360975725,'rest',0,14,0,102,'hidden'),(18,'REST_PASSPORT','Паспортные данные','/ahs/settings/passport','[\"DELETE\",\"GET\",\"POST\"]',1361113648,1361113648,'rest',0,14,0,103,'hidden'),(19,'REST_PARTICIPANTS','Участники','/ahs/participants','[\"GET\"]',1361220725,1361220725,'rest',0,NULL,0,104,'hidden');
 /*!40000 ALTER TABLE `action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,8 +67,10 @@ CREATE TABLE `ensurance_data` (
   `ensurance_comment` varchar(45) DEFAULT NULL,
   `currency` varchar(4) NOT NULL,
   `summ` float NOT NULL,
+  `created` int(11) NOT NULL,
+  `updated` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +79,7 @@ CREATE TABLE `ensurance_data` (
 
 LOCK TABLES `ensurance_data` WRITE;
 /*!40000 ALTER TABLE `ensurance_data` DISABLE KEYS */;
+INSERT INTO `ensurance_data` VALUES (1,'q23123',0,'',0,NULL,'',0,1360008658,1360011647);
 /*!40000 ALTER TABLE `ensurance_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,10 +96,8 @@ CREATE TABLE `ensurance_user` (
   `ensurance_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  KEY `ensurance_user_fx_ensurance_id` (`ensurance_id`),
-  CONSTRAINT `ensurance_user_fx_ensurance_id` FOREIGN KEY (`ensurance_id`) REFERENCES `ensuranse_data` (`id`),
-  CONSTRAINT `ensurance_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `ensurance_user_fx_ensurance_id` (`ensurance_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +106,7 @@ CREATE TABLE `ensurance_user` (
 
 LOCK TABLES `ensurance_user` WRITE;
 /*!40000 ALTER TABLE `ensurance_user` DISABLE KEYS */;
+INSERT INTO `ensurance_user` VALUES (5,2,1);
 /*!40000 ALTER TABLE `ensurance_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +127,7 @@ CREATE TABLE `goals` (
   KEY `idx_project_id` (`project_id`),
   KEY `fk_goals_project_id` (`project_id`),
   CONSTRAINT `fk_goals_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,6 +136,7 @@ CREATE TABLE `goals` (
 
 LOCK TABLES `goals` WRITE;
 /*!40000 ALTER TABLE `goals` DISABLE KEYS */;
+INSERT INTO `goals` VALUES (1,'zzxcxzzczxczx',1359843331,1359843331,2),(2,'serwerwrwrwe',1359843332,1359843357,2),(3,'zzxcxzzczxczx dfdfgdfgdfg',1359843357,1359843357,2),(4,'drt wer ewqwreqerqewr',1359845692,1359845692,2),(41,'фывфывф fffff',1360011643,1360011643,3),(42,'фывфыа аваыавы',1360011644,1360011644,3);
 /*!40000 ALTER TABLE `goals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,15 +188,11 @@ CREATE TABLE `passport_data` (
   `place` varchar(255) NOT NULL,
   `date_of_birth` int(11) NOT NULL,
   `place_of_birth` varchar(255) NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `mname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
   `updated` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `mname_UNIQUE` (`mname`),
   KEY `user_info_passport_fk_user_id` (`user_id`),
   CONSTRAINT `passport_data_idx_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,6 +201,7 @@ CREATE TABLE `passport_data` (
 
 LOCK TABLES `passport_data` WRITE;
 /*!40000 ALTER TABLE `passport_data` DISABLE KEYS */;
+INSERT INTO `passport_data` VALUES (1,1,'123','123',1360011600,'value=&quot;werwer&quot;',1361048400,'werwer',1360007617);
 /*!40000 ALTER TABLE `passport_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +220,7 @@ CREATE TABLE `place` (
   `lattitude` varchar(255) NOT NULL,
   `longtitude` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,6 +229,7 @@ CREATE TABLE `place` (
 
 LOCK TABLES `place` WRITE;
 /*!40000 ALTER TABLE `place` DISABLE KEYS */;
+INSERT INTO `place` VALUES (1,'weasdasda фывфывфы',1360006441,1360011642,'55.7765730186677','126.5625');
 /*!40000 ALTER TABLE `place` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,10 +247,10 @@ CREATE TABLE `place_project` (
   PRIMARY KEY (`id`),
   KEY `fk_place_project_project` (`project_id`),
   KEY `place_project_idx_place_id` (`place_id`),
-  CONSTRAINT `place_project_idx_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
   CONSTRAINT `fk_place_project_project` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `place_project_fx_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
-  CONSTRAINT `place_project_idx_place_id` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`)
+  CONSTRAINT `place_project_idx_place_id` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`),
+  CONSTRAINT `place_project_idx_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -272,8 +276,10 @@ CREATE TABLE `project` (
   `created` int(11) NOT NULL,
   `updated` int(11) NOT NULL,
   `owner_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `project_idx_owner_id` (`owner_id`),
+  CONSTRAINT `project_idx_owner_id` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,6 +288,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` VALUES (1,'sdrrwe ddddd',1359841872,1359842003,1),(2,'sdrrwe ddddd ddss',1359842026,1359845692,1),(3,'фывфывфывф',1359911304,1360011641,1);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,6 +375,7 @@ CREATE TABLE `user_info` (
 
 LOCK TABLES `user_info` WRITE;
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
+INSERT INTO `user_info` VALUES (1,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -415,7 +423,7 @@ CREATE TABLE `user_site` (
   KEY `user_site_idx_site_id` (`site_id`),
   CONSTRAINT `user_site_idx_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`),
   CONSTRAINT `user_site_idx_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,6 +432,7 @@ CREATE TABLE `user_site` (
 
 LOCK TABLES `user_site` WRITE;
 /*!40000 ALTER TABLE `user_site` DISABLE KEYS */;
+INSERT INTO `user_site` VALUES (2,1,1);
 /*!40000 ALTER TABLE `user_site` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,6 +453,9 @@ CREATE TABLE `users` (
   `actions` text,
   `siteid` bigint(20) NOT NULL,
   `roles` varchar(255) DEFAULT NULL,
+  `fname` varchar(255) DEFAULT NULL,
+  `lname` varchar(255) DEFAULT NULL,
+  `mname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -454,7 +466,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'harper','202cb962ac59075b964b07152d234b70','plcgi1@gmail.com',1358105447,1358105447,'[1,2,3,4,5]',0,NULL);
+INSERT INTO `users` VALUES (1,'harper','202cb962ac59075b964b07152d234b70','asdasd@asd.ass',1358105447,1361117371,'[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]',0,NULL,'Александр','Носов','Анатольевич');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -467,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-02-01  0:25:59
+-- Dump completed on 2013-02-20 23:36:43
