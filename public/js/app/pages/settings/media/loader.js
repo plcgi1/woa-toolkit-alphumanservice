@@ -14,10 +14,11 @@ window.modules = {
     prod: ['/js/min/place.js'],
     devel: [
         "/js/lib/jquery.jgrowl.js",
+        "/js/lib/jquery.upload.js",
         "/js/lib/mustache.js",
         "/js/lib/jquery.formParser.js",
         "/js/lib/bootstrap/bootstrap-dropdown.js",
-        "/js/lib/bootstrap/bootstrap-button.js",
+        "/js/lib/bootstrap/bootstrap-datepicker.js",
         "/js/lib/underscore.js",
         "/js/lib/backbone.js",
         
@@ -26,13 +27,14 @@ window.modules = {
         "/js/lib/errorvis.js",
         "/js/lib/bootstrap/bootstrap-modal.js",
         "/js/lib/backbone/sync.js",
-        "/js/lib/backbone/list.js",
+        "/js/lib/backbone/ajaxform.js",
+        "/js/lib/backbone/upload.js",
         
         "/js/app/config.js",
         "/js/app/auth.js",
-        "/js/app/collections/common.js",
-        "/js/app/helpers/marker.js",      
-        "/js/app/pages/participants/main.js"        
+        "/js/app/collections/upload.js",
+        "/js/app/helpers/marker.js",        
+        "/js/app/pages/settings/media/main.js"        
     ]   
 };
 

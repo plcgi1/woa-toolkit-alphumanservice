@@ -17,6 +17,7 @@ my $rules = [
     { path => '/ahs/participants$', class => 'Ahs::REST::Participants::SP' },
     { path => '/ahs/settings/contacts', class => 'Ahs::REST::Settings::Contacts::SP' },
     { path => '/ahs/settings/passport', class => 'Ahs::REST::Settings::Passport::SP' },
+    { path => '/ahs/settings/media', class => 'Ahs::REST::Settings::Media::SP' },
     
     { path => '/ahs/part-form/confirm$', class => 'Ahs::REST::Confirm::SP' },
     
@@ -43,6 +44,8 @@ my $rules = [
     { path => '/settings/passport', class => 'Ahs::Page::Settings' },
     
     { path => '/settings/contacts', class => 'Ahs::Page::Settings' },
+    
+    { path => '/settings/media', class => 'Ahs::Page::Settings' },
     
 ];
 

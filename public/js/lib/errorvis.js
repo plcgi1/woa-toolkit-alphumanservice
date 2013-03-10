@@ -1,7 +1,10 @@
 ;(function(ErrorVis){
     window.ErrorVis = window.ErrorVis || {};
 	window.ErrorVis.show_errors = function(error_fields){
-		//console.log(error_fields);
+		if (typeof error_fields === 'string' ) {
+			error_fields = $.parseJSON(error_fields);
+		}
+		
 		// clear all fields from error classes
 		$('.input').removeClass('error');
 		// fill errors for growl

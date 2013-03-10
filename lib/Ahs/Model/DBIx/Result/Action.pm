@@ -85,6 +85,18 @@ __PACKAGE__->table("action");
   default_value: 0
   is_nullable: 1
 
+=head2 order_by
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 1
+
+=head2 place
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 10
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -110,6 +122,10 @@ __PACKAGE__->add_columns(
   { data_type => "bigint", is_nullable => 1 },
   "is_public",
   { data_type => "tinyint", default_value => 0, is_nullable => 1 },
+  "order_by",
+  { data_type => "integer", default_value => 1, is_nullable => 1 },
+  "place",
+  { data_type => "varchar", is_nullable => 1, size => 10 },
 );
 
 =head1 PRIMARY KEY
@@ -156,8 +172,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-10 00:53:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IwsB2UWf6ZlXaz6qj6A46A
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-03-06 00:54:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pg1Qv2XKtxf7ZSbH5gyGAw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
