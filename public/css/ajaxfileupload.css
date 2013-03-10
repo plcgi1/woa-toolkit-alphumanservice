@@ -1,0 +1,101 @@
+#uploader, #uploadSummary {
+    width: 336px;
+    padding: 20px;
+    height: 300px;
+    border: solid 2px #ccc;
+    background-color: #fff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+#uploader {
+    float: left;
+    position: relative;
+}
+
+/*#fileField {
+    height: 0px; 
+    overflow: hidden;
+}*/
+
+#fileListWrap {
+    position: relative;
+    padding: 0 28px 0 0;
+}
+
+#fileList {
+    height: 130px;
+    overflow: auto;
+    margin: 0;
+}
+
+
+    #fileList li {
+        margin: 0 0 0.4em 10px;
+    }
+    
+/* =Summary box 
+-------------------------------------------------------------------- */
+#uploadSummary {
+    margin: 0 0 0 420px;
+}
+
+    #uploadSummary h2 {
+        font-size: 1.2em;
+        padding: 0 0 0.5em 0;
+        margin: 0;
+    }
+    
+        #uploadSummary h2 span {
+            border-bottom: solid 2px #6ab9ec;
+            padding: 0 0 0.4em 0;
+            font-weight: normal;
+        }
+        
+    #uploadSummary h3 {
+        font-size: 1.2em;
+        margin: 0 0 0.2em 0;
+    }
+
+    #uploadSummary ol {
+        overflow: auto;
+    }
+
+        #uploadSummary ol li {
+            margin: 0 0 0.4em 10px;
+        }
+        
+    #uploadSummary p {
+        margin: 0 0 0.2em 0;
+        color: #999;
+        font-size: 0.8em;
+    }
+    
+#responseList {
+    margin: 20px 0 0 0;
+    height: 230px;
+    overflow: auto;
+}
+
+#fillerText {
+    text-align: center;
+    color: #ccc !important;
+    margin: 120px 0 0 0 !important;
+    font: 300 1.8em 'Yanone Kaffeesatz', Georgia, serif !important;
+}
+
+/* =Progress bar
+------------------------------------------------------------------- */
+#progressBarOuter {
+    border: solid 1px #d8d8d8;
+    margin: 20px 0 4px 0;
+}
+
+#progressBar {
+    height: 5px;
+    background-color: #6AB9EC;
+    width: 0px;
+}
+
+#progressMeta {
+    text-align: right;
+}
