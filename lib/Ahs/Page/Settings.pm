@@ -4,6 +4,7 @@ use base 'Ahs::Page';
 use Data::Dumper;
 use Ahs::REST::Settings::Contacts::Backend;
 use Ahs::REST::Settings::Passport::Backend;
+use Ahs::REST::Settings::Media::Backend;
 
 sub get_map {
     my $map = [
@@ -88,6 +89,18 @@ sub media {
     
     if($session->{user}){
         $self->get_stash->{media_config} = [$config->{media}];
+        my $be = Ahs::REST::Settings::Media::Backend->new({
+            session =>  $session,
+            config  =>  $config,
+            model   =>  $self->get_model,
+            formatter => $self->get_formatter
+        });
+        my $rs = $be->get({user_id=>$session->{user}->{id}});
+        my $data = {};
+        foreach ( keys %$rs ) {
+            $data->{$_} = $rs->{$_}; 
+        }
+        $self->get_stash->{media} = $data;
     }
     
     $self->get_stash->{template} = 'Ahs/Page/Settings/Media.tpl';

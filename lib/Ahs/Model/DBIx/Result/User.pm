@@ -149,6 +149,12 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+__PACKAGE__->has_many(
+  "media",
+  "Ahs::Model::DBIx::Result::UserMedia",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
 =head2 projects
 
 Type: has_many

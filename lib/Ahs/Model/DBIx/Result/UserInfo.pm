@@ -97,12 +97,19 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "address",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "filename",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "content_type",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "size",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
 );
 
 
 # Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-02-10 00:53:04
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pNUHr4nwFTR6+pgZ0U4BcQ
 
+__PACKAGE__->set_primary_key("user_id");
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->belongs_to(

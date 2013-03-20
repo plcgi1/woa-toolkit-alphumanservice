@@ -70,33 +70,33 @@ sub process {
     return;
 }
 
-sub finalize {
-    my($self,$method_data,$res)=@_;
-
-    $self->ok_status_map($OK_STATUS_MAP);
-        
-    if ( $self->request->method eq 'GET' ){
-        # output headers content_type
-        my %headers;
-        $self->content_type($res->{content_type}.';name="'.$res->{filename}.'"');
-        
-        #$headers{last_modified} = $res->{mtime};
-        $headers{'Content-Disposition'} = 'attachment; filename="'.$res->{filename}.'"';
-        $headers{'Accept-Ranges'} = 'bytes';
-        $headers{'Content-Type'} = $self->content_type;
-        $self->headers(\%headers);
-        
-        binmode $res->{content};
-        $self->output( $res->{content} );
-        $self->status(200);
-    }
-    else {
-        $self->SUPER::finalize($method_data,$res);
-    }
-    $self->res($res);
-    
-    return;
-}
+#sub finalize {
+#    my($self,$method_data,$res)=@_;
+#
+#    $self->ok_status_map($OK_STATUS_MAP);
+#        
+#    if ( $self->request->method eq 'GET' ){
+#        # output headers content_type
+#        my %headers;
+#        $self->content_type($res->{content_type}.';name="'.$res->{filename}.'"');
+#        
+#        #$headers{last_modified} = $res->{mtime};
+#        $headers{'Content-Disposition'} = 'attachment; filename="'.$res->{filename}.'"';
+#        $headers{'Accept-Ranges'} = 'bytes';
+#        $headers{'Content-Type'} = $self->content_type;
+#        $self->headers(\%headers);
+#        
+#        binmode $res->{content};
+#        $self->output( $res->{content} );
+#        $self->status(200);
+#    }
+#    else {
+#        $self->SUPER::finalize($method_data,$res);
+#    }
+#    $self->res($res);
+#    
+#    return;
+#}
 
 
 1;

@@ -40,26 +40,30 @@ window.users = [% to_json(users) || '[]' %];
   </form>
 	<!-- templates -->
     <script id="listTpl" type="text/html">
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <td>
-          <div class="btn-group" data-toggle="buttons-radio">
-            <button type="button" class="btn span5">Все</button>
-            <button type="button" class="btn span4">Ни одного</button>
-          </div>
-          </td>
-          <td>N</td><td>FIO</td><td>Возраст</td></tr>
-      </thead>
-      {{#list}}
-      <tr>
-        <td><input type="checkbox" name="user" value="{{id}}" id="user_{{id}}" class="table-item"/></td>
-        <td></td>
-        <td><a href="/participants/{{id}}" class="">{{fio}}</a></td>
-        <td></td>
-      </tr>
+      <ul class="thumbnails">
+	  {{#list}}
+		<li class="span3">
+		  <div class="thumbnail">
+			<img src="/i/user-profile/{{filename}}" alt="">
+			<h5>{{fio}}</h5>
+			<p>{{date_of_birth}}</p>
+			<p>
+			  {{#projects}}
+				<div class="alert alert-info">
+				  <a type="button" class="close remove" href="#{{id}}" data-dismiss="alert">&times;</a>
+				  <span>
+					<b>
+					<a type="button" class="edit" href="#{{id}}">{{name}}</a>
+					</b>
+					<br> 
+				  </span>
+				</div>
+			  {{/projects}}
+			</p>
+		  </div>
+		</li>
       {{/list}}
-    </table>
+	  </ul>
     </script>
    [%INCLUDE "lib/footer.tt" WITH jscr=jscr%]
 </body>

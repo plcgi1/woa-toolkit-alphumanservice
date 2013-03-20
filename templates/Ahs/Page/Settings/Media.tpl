@@ -15,6 +15,7 @@
      <body>
 	  <script>
 		var media_config = [% to_json(media_config) || '[]' %];
+		var data = [% to_json(media) || '{}' %];
 	  </script>
     <div class="container">
         [%INCLUDE "lib/top-nav.tt"%]
@@ -33,22 +34,23 @@
 			  <input type="file" name="upload"/><input class="upload" type="button" name="doit" value="Начать загрузку" />
 			</p>
 			<div id="fileListWrap"  class="grad">
-			  <div class="preview">
-				  <span class="imageHolder">
-					<img src="/ahs/settings/media"/>
-				  </span>
-			  </div>
+			  <ul class="preview thumbnails">
+			  {{#list}}
+				  <li class="thumbnail imageHolder">
+					<img src="/i/user-profile/{{filename}}"/>
+					<div id="progressBarOuter">
+					<div id="progressBar"></div>
+					</div>
+					<div id="progressMeta">
+					  <span id="statusText"></span>&nbsp;
+					  <span id="percentage">0</span>&#37;
+					</div>
+				  </li>
+				{{/list}}  
+			  </ul>
 			</div>
-			<p id="controls">
-			  
-			</p>
-			<div id="progressBarOuter">
-			  <div id="progressBar"></div>
-			</div>
-			<p id="progressMeta">
-			  <span id="statusText"></span>&nbsp;
-			  <span id="percentage">0</span>&#37;
-			</p>
+			<p id="controls">			  
+			</p>			
 		</fieldset>
 	  </form>
     

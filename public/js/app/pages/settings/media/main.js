@@ -20,8 +20,10 @@
     }
   });
   var uploadeView = new View();
-
+  model.add(data);
+  console.log(model);
   uploadeView.render();
+  
 })();
 
 $(document).ready(function() {

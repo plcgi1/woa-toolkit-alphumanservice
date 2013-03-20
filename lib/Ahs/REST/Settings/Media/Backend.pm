@@ -1,6 +1,7 @@
 package Ahs::REST::Settings::Media::Backend;
 use common::sense;
 use base 'Ahs::REST::Backend';
+use Digest::MD5 qw/md5_hex/;
 use Data::Dumper;
 
 
@@ -13,23 +14,35 @@ sub save {
     my $fmt = $self->get_formatter;
     $param->{media} = $self->get_request->uploads->{media};
     
-    my $rs = $model->resultset('UserMedia')->find_or_create(
+    my $tempname = $param->{media}->tempname;
+    
+    my $rs = $model->resultset('UserInfo')->single(
         {'user_id' => $session->{user}->{id} },
     );
     
-    if ( $rs ) {
+    if ( $rs && $param->{media}->filename ) {
         my @arr;
-        open F,$param->{media}->tempname || die "Cant open file ".$param->{media}->tempname." - '$!'";
-        while ( my $line = <F> ) {
-            push @arr,$line;
+        my $out_dir = $self->_get_dir_path;
+        my $ext = (split '\.',$param->{media}->filename)[-1];
+        my $out_file = "$out_dir/".md5_hex($param->{media}->filename).'.'.$ext;        
+        
+        unless ( -d $out_dir ) {
+            mkdir $out_dir;
         }
+        open F, $tempname || die "Cant open file ".$param->{media}->tempname." - '$!'";
+        open OUT,">$out_file";
+        while ( my $line = <F> ) {
+            print OUT $line;
+        }
+        close OUT;
         close F;
-        $rs->content(join '',@arr);
+        #$rs->content(join '',@arr);
+        
         $rs->filename($param->{media}->filename);
         $rs->content_type($param->{media}->content_type);
         $rs->size($param->{media}->size);
         $rs->update();
-        $param->{id} = $rs->get_column('id');
+        $param->{id} = $rs->get_column('user_id');
     }        
 
     #warn Dumper $file;
@@ -52,18 +65,31 @@ sub get {
     my $model   = $self->get_model;
     my $fmt     = $self->get_formatter;
     
-    my $rs = $model->resultset('UserMedia')->single(
+    my $rs = $model->resultset('UserInfo')->single(
         {'user_id' => $session->{user}->{id} },
     );
         
     # make return with values - for tests
     my $res = {};
     if($rs) {
+        my $file = $rs->get_column('filename');
+        if ( $file ) {
+            my $ext = (split '\.',$rs->get_column('filename'))[-1];
+            $res = {
+                filename        => md5_hex($rs->get_column('filename')).'.'.$ext,
+                content_type    => $rs->get_column('content_type'),
+                size            => $rs->get_column('size')    
+            }    
+        }
+        else {
+            $res = {
+                filename        => '../no-photo.gif',
+            }
+        }
+    }
+    else {
         $res = {
-            filename        => $rs->get_column('filename'),
-            content_type    => $rs->get_column('content_type'),
-            content         => $rs->get_column('content'),
-            size            => $rs->get_column('size')    
+            filename        => '../no-photo.gif',
         }
     }
     return $res;
@@ -82,7 +108,11 @@ sub remove {
 
 }
 
-
+sub _get_dir_path {
+    my $config = $_[0]->get_config();
+    my $res = $config->{app_root}.'/public'.$config->{static}->{user_profile_path};
+    return $res;
+}
 
 1;
 

@@ -16,6 +16,7 @@ window.modules = {
         "/js/lib/jquery.jgrowl.js",
         "/js/lib/mustache.js",
         "/js/lib/jquery.formParser.js",
+        "/js/lib/jquery.masonry.js",
         "/js/lib/bootstrap/bootstrap-dropdown.js",
         "/js/lib/bootstrap/bootstrap-button.js",
         "/js/lib/underscore.js",

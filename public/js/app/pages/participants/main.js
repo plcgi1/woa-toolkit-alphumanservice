@@ -7,7 +7,7 @@
   var ListView = Backbone.List.View.extend({
     template : $('#listTpl').html(),
     dialog: $('#formDlg'),
-    el:$('#list')
+    el:$('#list')    
   });
   
   var list_view = new ListView({
@@ -15,6 +15,11 @@
     showdialog: true
   });
   list_view.render();
+  //$('.thumbnails').masonry({
+  //  // options
+  //  itemSelector : '.item',
+  //  columnWidth : 280
+  //});
 })();
 
 $(document).ready(function() {
