@@ -1,7 +1,7 @@
 package Ahs::Page::Part;
 use common::sense;
 use base 'Ahs::Page';
-use Ahs::REST::UserData::Backend;
+use Ahs::REST::Participants::Backend;
 use Data::Dumper;
 
 sub get_map {
@@ -23,15 +23,15 @@ sub index {
     my $session = $self->get_session();
     my $fmt     = $self->get_formatter;
 
-    if($session->{users_data}){
-        my $be = Ahs::REST::UserData::Backend->new({
-            session => $session,config=>$config
-        });
-        $self->get_stash->{usersdata} = $be->get();
-    }
+    my $be = Ahs::REST::Participants::Backend->new({
+        session => $session, config => $config, formatter => $fmt, model => $self->get_model
+    });
+    $self->get_stash->{users} = $be->get();
 
     $self->get_stash->{template} = 'Ahs/Page/Part.tpl';
-
+    
+    $self->get_stash->{saved_users} = $session->{users};
+    
     return $self->get_stash;
 }
 

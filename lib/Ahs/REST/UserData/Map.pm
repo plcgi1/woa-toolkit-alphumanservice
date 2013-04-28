@@ -15,24 +15,6 @@ my $map = [
                 # some patterns to define field names and validation rules
                 # all rule names - in WOA::Validator::Rules::Base
                 { name => 'id',         rules => [ {rule => 'latinString' } ], error => "Bad value for id" },
-                { name => 'user_id',    rules => [ {rule => 'integer' } ], error => "Bad value for user_id" },
-                { name => 'passport_number',     rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'passport_number'" },
-                { name => 'serial',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'serial'" },
-                { name => 'input_date',     rules => [ {rule => 'simple_date_dmy' } ], error => "Bad value for 'input_date'" },
-                { name => 'birth_date',     rules => [ {rule => 'simple_date_dmy' } ], error => "Bad value for 'birth_date'" },
-                { name => 'place',          rules => [ {rule => 'anyText' } ], error => "Bad value for 'place'" },
-                { name => 'birth_place',    rules => [ {rule => 'anyText' } ], error => "Bad value for 'birth_place'" },
-                { name => 'ensurance_number',   rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'ensurance_number'" },
-                { name => 'ensurance_date',     rules => [ {rule => 'simple_date_dmy' } ], error => "Bad value for 'ensurance_date'" },
-                { name => 'fname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'fname'" },
-                { name => 'mname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'mname'" },
-                { name => 'lname',              rules => [ {rule => 'anyText' } ], required => 1,error => "Bad value for 'lname'" },
-                { name => 'ensurance_name',     rules => [ {rule => 'anyText' } ], error => "Bad value for 'ensurance_name'" },
-                { name => 'ensurance_date_till',     rules => [ {rule => 'simple_date_dmy' } ], error => "Bad value for 'ensurance_date_till'" },
-                
-                { name => 'ensurance_comment',    rules => [ {rule => 'anyText' } ], error => "Bad value for ensurance_comment" },
-                { name => 'currency',    rules => [ {rule => 'pattern', param => '^(BR|RR|USD|EU)$' } ], error => "Bad value for currency" },
-                { name => 'summ',    rules => [ {rule => 'integer' } ], error => "Bad value for 'summ" },
             ]
         },
         # service output description

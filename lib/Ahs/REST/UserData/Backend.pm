@@ -5,12 +5,34 @@ use Data::Dumper;
 
 sub new {
     my($class,$param) = @_;
-	$param->{key} = 'usersdata';
+	$param->{key} = 'users';
     my $self = $class->SUPER::new($param);
     bless $self,$class;
 
     return $self;
 }
+
+sub save {
+    my ( $self, $param ) = @_;
+
+    my $config  = $self->get_config;
+    my $session = $self->get_session();
+    my $model   = $self->get_model;
+    my $key 	= $self->get_key;
+    my $rs;
+	my $data = $session->{$key};
+    
+	unless ( $data ) {
+    	$data = {};
+    }
+       
+    $data->{$param->{id}} = 1;
+    $session->{$key} = $data;
+    my $res = $self->_hash_to_array($session->{$key});
+    
+    return $res;
+}
+
 1;
 
 __END__

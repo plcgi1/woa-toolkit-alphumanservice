@@ -14,7 +14,7 @@ sub save {
     my $res = $self->process($model,$session,$param);
     unless ( $res->{errors} ) {
         delete $session->{geodata};
-        delete $session->{users_data};
+        delete $session->{users};
         delete $session->{project_data};
         delete $session->{goals};
     }

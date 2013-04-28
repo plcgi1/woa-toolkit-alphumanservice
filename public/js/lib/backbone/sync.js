@@ -55,6 +55,8 @@ Backbone.sync = function(method, model, options) {
     //var method_params = method_map[method];
     //
     //return $.ajax(_.extend(method_params, options));
+    //console.log(options);
+    
     var methodMap = {
         'create': 'POST',
         'update': 'PUT',
@@ -149,7 +151,13 @@ Backbone.sync = function(method, model, options) {
             success(collection,data);
             //console.log(success);
         }
-        if ( type === 'DELETE' ) {
+        if( options.noGrowl === 1 ) {
+            
+        }
+        else if ( type === 'GET' ) {
+            $.jGrowl('Данные получены');
+        }
+        else if ( type === 'DELETE' ) {
             $.jGrowl('Данные удалены');
         }
         else {

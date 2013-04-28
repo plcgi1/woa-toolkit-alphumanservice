@@ -1,0 +1,20 @@
+<script id="listTpl" type="text/html">
+<ul class="thumbnails">
+{{#list}}
+  <li class="middle">
+	<div class="thumbnail card {{selected}}" data-toggle="tooltip" title="first tooltip" data-user_id="{{id}}">
+	  <img src="/i/user-profile/{{filename}}" alt="" width="100" height="100" class="img-circle">
+	  <h6>{{fio}}</h6>
+	  <ul class="nav nav-pills user-info">
+		<li>
+		  <a href="#{{id}}" data-toggle="tooltip" data-placement="bottom" title=" " class="user-info" data-target="projects" data-user_id="{{id}}">Проекты</a>
+		  <div class="projects" id="projectsContent{{id}}">
+		  </div>
+		</li>
+	  </ul>
+	  <div class="hidden"><i class="icon-ok"></i><div>
+	</div>
+  </li>
+{{/list}}
+</ul>
+</script>

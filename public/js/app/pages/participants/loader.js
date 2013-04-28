@@ -19,6 +19,8 @@ window.modules = {
         "/js/lib/jquery.masonry.js",
         "/js/lib/bootstrap/bootstrap-dropdown.js",
         "/js/lib/bootstrap/bootstrap-button.js",
+        "/js/lib/bootstrap/bootstrap-tooltip.js",
+        "/js/lib/bootstrap/bootstrap-popover.js",
         "/js/lib/underscore.js",
         "/js/lib/backbone.js",
         
@@ -32,6 +34,7 @@ window.modules = {
         "/js/app/config.js",
         "/js/app/auth.js",
         "/js/app/collections/common.js",
+        "/js/app/views/projects.js",
         "/js/app/helpers/marker.js",      
         "/js/app/pages/participants/main.js"        
     ]   
